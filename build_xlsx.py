@@ -191,13 +191,15 @@ rows1 = [
      "BESTE LOKALE OPTION. Carpenter+Designer Duo, lokale Materialien. +800 EUR pro extra Tuer/Fenster",
      "10.000-15.000 (geschaetzt)"],
 
-    ["Casa dos Sonhos Yurts (Alentejo)", "Portugal (Alto Alentejo)", "https://www.facebook.com/yurtscasadossonhos/",
+    ["Casa dos Sonhos Yurts (Alto Alentejo, Besteiros de Cima/Portalegre)",
+     "Portugal (Alto Alentejo)",
+     "https://www.casadossonhos.co.uk/copy-of-environmental-policy",
      "5m=20m2 / 6,1m=30m2 / 7,3m=42m2 / 9,1m=64m2", "Anfrage",
-     "Solar-gefertigt, lokale Materialien",
-     "EXZELLENT - 10 Jahre UV/Faeulnis-Garantie auf Aussenhuelle!",
-     "Innerhalb PT inkl. Lieferung & Aufbau",
-     "BEST KLIMA-EIGNUNG: 10-Jahres-Garantie gegen UV-Schaeden ist einzigartig",
-     "8.000-15.000 (geschaetzt nach Groesse)"],
+     "Portugiesisches Holz (Tueren, Khana-Gitter, Sparren, Fenster), portugiesische Korkboeden + Korkdaemmung, moderne Isolierung, Aussenhuelle mit 10-J. UV-Garantie",
+     "EXZELLENT - 10 Jahre UV-Garantie auf Aussenhuelle, Plane rottet/schimmelt nicht, braucht keine Nachbehandlung; speziell fuer portugiesisches Wetter gefertigt",
+     "Innerhalb Festland-PT inkl. Lieferung & Aufbau (im Preis enthalten)",
+     "STANDARD inkl.: 1x1 m doppelverglastes Alu-Fenster (9,1m: 120x120cm), Holztuer mit Fenster+Laden, Daemmung, oeffenbares Kuppel-Oberlicht. Selbsttragend ohne Mittelsaeule, Wand >2 m, Mittelring min. 3,5 m. Solarwerkstatt. OPTIONEN: groessere Fenster, Sturm-Kit, Extra-Daemmlagen, franz. Doppeltueren 3/4-Glas+Lade, Kaminzug, Mueckennetze",
+     "8.000-15.000 (geschaetzt nach Groesse) - Lieferung+Aufbau PT inklusive"],
 
     ["Yurt Workshop Spain (Cadiar)", "Spanien (Granada)", "http://yurtworkshop.es/",
      "5-9m", "Anfrage",
@@ -475,10 +477,10 @@ for i, w in enumerate(widths3, 1):
 ws4 = wb.create_sheet("Top 5 Empfehlungen")
 headers4 = ["Rang", "Anbieter", "Typ", "Preis EUR", "Warum empfohlen", "Link"]
 rows4 = [
-    [1, "Casa dos Sonhos Yurts", "Hersteller PT (Alentejo)",
-     "ca. 8.000-15.000 nach Groesse",
-     "BESTE KLIMA-EIGNUNG: 10 Jahre UV/Faeulnis-Garantie auf Aussenhuelle (einzigartig im Markt). Lokal in Alentejo gebaut, kein Import-Zoll/IVA, Lieferung und Aufbau in PT inklusive. Solarstrom-Werkstatt, lokale Materialien. Ideal fuer Algarve-Klima. Direkt vom Hersteller mit Garantie.",
-     "https://www.casadossonhos.co.uk/ / https://www.facebook.com/yurtscasadossonhos/"],
+    [1, "Casa dos Sonhos Yurts (Alto Alentejo)", "Hersteller PT - lokale Spitzenoption",
+     "ca. 8.000-15.000 nach Groesse (Lieferung+Aufbau PT inkl.)",
+     "BESTE KLIMA-EIGNUNG IM MARKT: 10 Jahre UV-Garantie auf Aussenhuelle, Plane rottet/schimmelt nicht, keine Nachbehandlung noetig. Standorte: 5m/6,1m/7,3m/9,1m (20/30/42/64 m2). SELBSTTRAGEND ohne Mittelsaeule, Waende >2 m, Mittelring 3,5 m -> super geraeumig. STANDARD inkl.: doppelverglastes Alu-Fenster, Holztuer m. Fenster+Laden, Daemmung, oeffenbares Kuppel-Oberlicht. Portugiesisches Holz + portug. Korkboeden + Korkdaemmung. Solarwerkstatt in Alto Alentejo (Portalegre). Lieferung und Aufbau in Festland-PT IM PREIS. Kein Import-Zoll/IVA. Optionen: Sturm-Kit (Algarve-Winterstuerme!), Extra-Daemmung, franz. Doppeltueren, Kaminzug, Mueckennetze.",
+     "https://www.casadossonhos.co.uk/copy-of-environmental-policy  |  https://www.facebook.com/yurtscasadossonhos/"],
 
     [2, "Bet Yurts", "Hersteller PT (Algarve direkt)",
      "ca. 10.000-15.000 (Anfrage)",
@@ -629,6 +631,134 @@ for title, items in sections:
 # Datum
 ws5.cell(row=row + 1, column=1, value="Recherche-Stand:").font = Font(bold=True)
 ws5.cell(row=row + 1, column=2, value="2026-05-11 - Preise koennen sich aendern. Alle Preise EUR, sofern nicht anders angegeben.")
+
+
+# ============ Sheet 6: Casa dos Sonhos Detail ============
+ws6 = wb.create_sheet("Casa dos Sonhos Detail")
+ws6.column_dimensions["A"].width = 38
+ws6.column_dimensions["B"].width = 95
+
+title_cell = ws6.cell(row=1, column=1, value="Casa dos Sonhos Yurts - Detail-Analyse (Quelle: casadossonhos.co.uk/copy-of-environmental-policy + Facebook/Instagram)")
+title_cell.font = TITLE_FONT
+ws6.merge_cells("A1:B1")
+ws6.row_dimensions[1].height = 28
+
+cds_data = [
+    ("Allgemein", ""),
+    ("Firmenname", "Casa dos Sonhos Yurts (\"House of Dreams\")"),
+    ("Standort", "Besteiros de Cima nahe Portalegre, Alto Alentejo, Portugal"),
+    ("Werkstatt", "Solar-betriebene (off-grid) Werkstatt im Alto Alentejo"),
+    ("Hauptseite", "https://www.casadossonhos.co.uk/"),
+    ("Environmental Policy (Quelle dieses Detail-Sheets)", "https://www.casadossonhos.co.uk/copy-of-environmental-policy"),
+    ("Facebook", "https://www.facebook.com/yurtscasadossonhos/"),
+    ("Instagram", "https://www.instagram.com/casadossonhosyurts/"),
+    ("YouTube", "https://www.youtube.com/channel/UCfenMyhVzEkX7P-lz2hjS6A"),
+    ("Schwester-Projekt", "https://casadossonhos.org/ (Wollverarbeitung in Planung)"),
+
+    ("", ""),
+    ("Verfuegbare Groessen", ""),
+    ("5 m Durchmesser", "20 m2 Innenflaeche"),
+    ("6,1 m (20 foot) Durchmesser", "30 m2 Innenflaeche"),
+    ("7,3 m (24 foot) Durchmesser", "42 m2 Innenflaeche"),
+    ("9,1 m (30 foot) Durchmesser", "64 m2 Innenflaeche"),
+
+    ("", ""),
+    ("Bauart & Konstruktion", ""),
+    ("Selbsttragend", "ALLE Modelle ohne Mittelsaeule / -stuetze - max. offener Innenraum"),
+    ("Wandhoehe", "ueber 2 m (mehr als Standard-Mongolisch)"),
+    ("Hoehe Mittelring (Toono)", "min. 3,5 m - sehr geraeumig, geeignet fuer Hochbett/Galerie"),
+    ("Fertigung", "Handgefertigt vom Hersteller-Paar in Alentejo"),
+
+    ("", ""),
+    ("Standardausstattung (im Basispreis enthalten)", ""),
+    ("Fenster", "1x1 m doppelverglastes Aluminium-Fenster (beim 9,1m-Modell: 120x120 cm)"),
+    ("Tuer", "Holztuer mit kleinem Fenster und Holzladen"),
+    ("Daemmung", "Moderne Daemmung inklusive"),
+    ("Dachoeffnung", "Oeffnungs-faehiges, klares Kuppel-Oberlicht (\"opening clear domed skylight\")"),
+    ("Aussenhuelle", "Speziell fuer portugiesisches Wetter konzipierte Plane mit 10-J. UV-Garantie"),
+    ("Lieferung & Aufbau", "IM PREIS ENTHALTEN innerhalb Festland-Portugal"),
+
+    ("", ""),
+    ("Materialien (Portuguese sourced)", ""),
+    ("Holz", "Portugiesisches Holz fuer Tueren, Khana-Lattengitter, Sparren, Fensterrahmen"),
+    ("Bodenbelag", "Portugiesische Korkboeden (regional, oeko)"),
+    ("Daemmung", "Portugiesische Korkdaemmung"),
+    ("Wolle", "Aktuell zugekauft; eigenes Wollverarbeitungs-Projekt geplant (Alentejo-Schafwolle)"),
+    ("Aussenhuelle-Qualitaet", "Premium: 10-J. UV-Garantie, nie Faeulnis, nie Schimmel, KEINE Nachbehandlung noetig"),
+
+    ("", ""),
+    ("Optionale Zusatzausstattung", ""),
+    ("Groessere Fenster", "Anstelle 1x1m Standard"),
+    ("High Wind Kit / Sturm-Kit", "Verstaerkte Verankerung fuer stuermische Regionen (EMPFEHLUNG fuer Algarve-Kueste!)"),
+    ("Zusaetzliche Daemmlagen", "Fuer kuehlere Lagen / Winterwohnen"),
+    ("Zusaetzliche Tueren/Fenster", "Beliebig"),
+    ("Franz. Doppeltueren", "3/4-Verglasung mit Holzladen (\"French double doors with 3/4 glass and shutters\")"),
+    ("Kaminzug (Flue Kit)", "Vorbereitung fuer Holzofen / Wood Burner"),
+    ("Mueckennetze (Mosquito Screens)", "WICHTIG fuer Algarve-Sommer"),
+
+    ("", ""),
+    ("Garantie & Klima-Eignung", ""),
+    ("UV-Garantie Aussenhuelle", "10 JAHRE - hoechste am Markt nachgewiesene Garantie"),
+    ("Schutzklassen", "Plane rottet nicht, schimmelt nicht, braucht keine UV-Nachbehandlungen"),
+    ("Geeignet fuer", "Vollstaendig auf das portugiesische Klima (heisse Sommer, feuchte Winter) ausgelegt"),
+    ("Empfehlung Algarve", "Mit Sturm-Kit + Mueckennetz + ggf. Extra-Daemmung -> ideal fuer Algarve"),
+
+    ("", ""),
+    ("Preis & Kommerzielles", ""),
+    ("Preisliste", "Nicht oeffentlich. Anfrage per E-Mail / Facebook erforderlich."),
+    ("Schaetzung 5m (20 m2)", "ca. 8.000-10.500 EUR inkl. Aufbau (vergleichbar mit Yourtepoque-Niveau + Local-Bonus)"),
+    ("Schaetzung 6,1m (30 m2)", "ca. 9.500-12.500 EUR inkl. Aufbau"),
+    ("Schaetzung 7,3m (42 m2)", "ca. 11.500-14.500 EUR inkl. Aufbau (an Budget-Grenze)"),
+    ("Schaetzung 9,1m (64 m2)", "ca. 15.000-20.000+ EUR (ueber Budget)"),
+    ("Lieferung & Aufbau", "Inklusive in Festland-PT"),
+    ("Import-Zoll/IVA", "ENTFAELLT (lokale PT-Produktion)"),
+    ("Zahlung", "Direkt mit Hersteller, vermutlich Anzahlung + Restzahlung bei Abnahme"),
+
+    ("", ""),
+    ("Nachhaltigkeit / ESG", ""),
+    ("Energie Produktion", "100% Solar in der Werkstatt"),
+    ("Materialien-Herkunft", "Portugiesisch (Holz, Kork)"),
+    ("Soziales Engagement", "Plant Wollverarbeitung um lokale Schafwolle aufzuwerten (Alentejo) - aktuell unterbewertet"),
+    ("Kreislaufwirtschaft", "Natuerliche Materialien, kein PVC im Standard"),
+
+    ("", ""),
+    ("Risiken & Hinweise", ""),
+    ("Lieferzeit", "Handarbeit -> mehrere Monate Vorlauf einplanen"),
+    ("Skalierung", "Kleines Familienunternehmen - Reaktionszeit kann variieren"),
+    ("Preis intransparent", "Keine oeffentliche Preisliste - immer schriftliches Angebot einholen + Optionen klar definieren"),
+    ("Sturmkomponente", "Algarve-Kueste: Sturm-Kit OBLIGATORISCH bestellen"),
+    ("Hitze Innenraum", "Trotz 10-J. Plane: zusaetzliches Schattennetz/Pergola fuer 40C+ Sommertage empfehlenswert"),
+
+    ("", ""),
+    ("Fazit fuer Algarve", ""),
+    ("Bewertung", "TOP-EMPFEHLUNG #1 - einzigartige 10-J. UV-Garantie, lokale Produktion, Lieferung+Aufbau inkl., portugiesische Materialien, kein Import-Risiko."),
+    ("Naechster Schritt", "Per Facebook Messenger / E-Mail Angebot fuer 5m oder 6,1m anfragen, mit Sturm-Kit, Mueckennetz, Kaminzug, ggf. franz. Doppeltueren."),
+]
+
+row = 2
+for label, val in cds_data:
+    if label and not val:
+        # Sektions-Ueberschrift
+        c = ws6.cell(row=row, column=1, value=label)
+        c.font = Font(bold=True, size=12, color="2E5C8A")
+        ws6.merge_cells(start_row=row, start_column=1, end_row=row, end_column=2)
+        ws6.row_dimensions[row].height = 22
+    elif not label and not val:
+        # Leerzeile
+        ws6.row_dimensions[row].height = 8
+    else:
+        c1 = ws6.cell(row=row, column=1, value=label)
+        c1.font = Font(bold=True)
+        c1.alignment = Alignment(wrap_text=True, vertical="top")
+        c1.border = BORDER
+        c2 = ws6.cell(row=row, column=2, value=val)
+        c2.alignment = Alignment(wrap_text=True, vertical="top")
+        c2.border = BORDER
+        ws6.row_dimensions[row].height = max(20, min(60, 15 + len(val) // 6))
+    row += 1
+
+ws6.freeze_panes = "A2"
+
 
 # Speichern
 output_path = "/home/user/Jurte/Jurten_Recherche_Algarve.xlsx"
