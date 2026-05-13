@@ -225,6 +225,16 @@ rows1 = [
      "15+ Jahre Erfahrung, 150+ Jurten geliefert",
      "8.000-15.000"],
 
+    ["Yurt Made in Portugal (Loures, ueber OLX)", "Portugal (Loures, Lisboa)",
+     "https://www.olx.pt/d/anuncio/yurt-made-in-portugal-IDIyzPL.html",
+     "5m=20m2 / 6m=28m2 / 7-8m auf Anfrage",
+     "5m 6.900 / 6m 8.400 / 7-8m Anfrage",
+     "Holz + Filz + Plane (modern), portugiesisch handgefertigt",
+     "Sehr gut - lokaler PT-Hersteller seit 2020, kein Import-Zoll/IVA",
+     "Innerhalb PT - Lieferung+Aufbau EXTRA (standortabhaengig)",
+     "Neuer kleiner PT-Hersteller bei Lissabon, 'modern take on ancient living'. OLX-Praesenz seit 2020.",
+     "8.400-10.500 inkl. Aufbau (6m)"],
+
     ["Yurt Workshop UK", "UK", "https://www.yurtworkshop.com/",
      "5-7m", "Anfrage GBP/EUR",
      "Eichen-/Kastanien-Holz + Canvas + Wollfilz",
@@ -330,11 +340,24 @@ rows2 = [
      "https://www.milanuncios.com/anuncios/yurt-yurta.htm",
      "Ja", "Komplett ausgestattet 27.500 EUR, ohne Moebel 22.500 EUR (Beispiel)"],
 
-    ["OLX Portugal yurts", "olx.pt", "Portugal",
+    ["OLX Portugal yurts (Kategorie-Uebersicht)", "olx.pt", "Portugal",
      "diverse", "variabel", "Neu/gebraucht",
-     "https://www.olx.pt/moveis-casa-e-jardim/q-yurts/",
+     "https://www.olx.pt/moveis-casa-e-jardim/jardim-e-bricolage/q-yurts/",
      "Ja - innerhalb PT",
      "INLAND PT - keine Zoll, kein Auslandsversand"],
+
+    ["OLX PT: Yurts mongois (Igreja Nova/Cheleiros, Mafra)", "olx.pt", "PT - Mafra (bei Lissabon)",
+     "28 m2 (6 m Durchmesser)", 5000, "Gebraucht / Restposten",
+     "https://www.olx.pt/d/anuncio/yurts-mongis-mongolian-yurts-IDHQ8sJ.html",
+     "Ja - inland PT, Transport+Aufbau gegen Aufpreis",
+     "BESTPREIS 6m+ auf OLX! Filzdecke (warm/kuehl), mobile Aufbau auf jeder ebenen Flaeche. Optional Pelletofen gegen Aufpreis. Direkt vom Verkaeufer."],
+
+    ["OLX PT: Tenda Yurt Original Quirguistao (Palmela)", "olx.pt", "PT - Palmela (Setubal)",
+     "28 m2 (ca. 6 m Durchmesser, 30 Personen)", "Anfrage",
+     "Neu/handgefertigt (Originalimport Issyk-Kul Quirguistao)",
+     "https://www.olx.pt/d/anuncio/tenda-yurt-original-do-quirguisto-yurt-tent-original-from-kyrgystan-IDHEwz9.html",
+     "Ja - PT-inland, Versand EXTRA (Region Lissabon)",
+     "Marke 'Yourta', Modell 'Serenity'. Komplette Originalausstattung: Schilf-Geflecht, Wolle/Filz, Shyrdak-Teppich, Baskur-Band, Korpe-Kissen, geschnitzte Holztuer. Hand-Applikation. Keine Baugenehmigung noetig."],
 
     ["Yurt Workshop Secondhand", "yurtworkshop.com (Spanien)", "Spanien Granada",
      "5-7m", "3.000-10.000", "Gebraucht (vom Hersteller)",
@@ -758,6 +781,72 @@ for label, val in cds_data:
     row += 1
 
 ws6.freeze_panes = "A2"
+
+
+# ============ Sheet 7: OLX 6m+ Funde ============
+ws7 = wb.create_sheet("OLX 6m+ Funde")
+headers7 = [
+    "Titel/Listing", "Standort PT", "Durchmesser",
+    "Innenflaeche m2", "Preis EUR", "Zustand", "Material/Bauart",
+    "Versand/Aufbau", "Direktlink", "Anmerkungen / Bewertung Algarve",
+]
+rows7 = [
+    ["Yurts mongois / Mongolian Yurts",
+     "Igreja Nova e Cheleiros (Mafra, naehe Lissabon)",
+     "6 m", "28 m2", 5000, "Gebraucht/Restposten - direkt vom Verkaeufer",
+     "Klassische mongolische Bauweise: Filzdecke (warm im Winter, kuehl im Sommer), Holzgitter, mobil auf jeder ebenen Flaeche aufbaubar",
+     "PT-inland, Transport+Aufbau gegen Aufpreis. Optional Pelletofen gegen Aufpreis.",
+     "https://www.olx.pt/d/anuncio/yurts-mongis-mongolian-yurts-IDHQ8sJ.html",
+     "TOP-FUND: Gueneststes 6m-Angebot auf OLX. ABER: traditioneller Filz/Canvas ohne UV-Schutz - mit Schattennetz nachruesten (siehe Hinweise-Sheet) sonst Plane nur 2-3 Jahre Lebensdauer in Algarve. Mit Pelletofen+Aufbau realistisch 6.000-7.500 EUR Total"],
+
+    ["TENDA YURT Original do Quirguistao (Marke Yourta - Modell 'Serenity')",
+     "Palmela (Setubal, naehe Lissabon)",
+     "ca. 6 m (geschaetzt aus 28 m2)", "28 m2 (Kapazitaet 30 Personen)",
+     "Anfrage (Region Lissabon)",
+     "Neu / handgefertigt, original aus Quirguistao (Issyk-Kul See)",
+     "Original kirgisisch: Schilf-Geflecht (Junco), Wolle und Filz. Komplette Originaldeko: Shyrdak-Teppich, Baskur-Band, Korpe-Linen-Kissen, geschnitzte Holztuer, Filz-Tuerverkleidung, dekorative Kuppelbaender",
+     "Versand EXTRA (Region Lissabon - genauen Preis erfragen)",
+     "https://www.olx.pt/d/anuncio/tenda-yurt-original-do-quirguisto-yurt-tent-original-from-kyrgystan-IDHEwz9.html",
+     "HOHE AUTHENTIZITAET: Originalimport aus Quirguistao, traditionelle Stickerei und Applikationen. PROBLEM ALGARVE: traditioneller Filz/Wolle nicht fuer 40C+ ausgelegt; Plane unter UV-Belastung anfaellig. Sehr dekorativ - eher fuer kuehlere Bergstandorte als heisse Algarve geeignet. Inserent in PT, kein Importzoll."],
+
+    ["Yurt Made in Portugal (Hersteller-Insertion auf OLX)",
+     "Loures (naehe Lissabon)",
+     "6 m verfuegbar (auch 5m, 7m, 8m)",
+     "ca. 28 m2 (6m)", 8400, "NEU - Hersteller seit 2020",
+     "Modern interpretierte traditionelle Bauweise; portugiesischer Hersteller",
+     "Lieferung+Aufbau NICHT inklusive - extra je nach Standort und Groesse",
+     "https://www.olx.pt/d/anuncio/yurt-made-in-portugal-IDIyzPL.html",
+     "Lokaler PT-Hersteller (kein Importzoll), seit 2020 aktiv. Direktkontakt ueber OLX. 5m=6.900 EUR / 6m=8.400 EUR / 7-8m auf Anfrage. Hinweis: Klimaschutz/UV-Garantie nicht spezifiziert -> dringend nachfragen, ob Plane fuer Algarve geeignet ist."],
+]
+# Nach Preis sortieren
+rows7.sort(key=lambda r: r[4] if isinstance(r[4], (int, float)) else 9999999)
+style_sheet(ws7, headers7, rows7)
+widths7 = [34, 30, 14, 18, 14, 28, 40, 32, 50, 60]
+for i, w in enumerate(widths7, 1):
+    ws7.column_dimensions[get_column_letter(i)].width = w
+# Zeilenhoehe fuer lange Texte
+for r in range(2, len(rows7) + 2):
+    ws7.row_dimensions[r].height = 110
+
+# Hinweise-Footer
+note_row = len(rows7) + 3
+note = ws7.cell(row=note_row, column=1,
+                value=("Ausgeschlossen (unter 6 m Mindestgroesse): "
+                       "'Yurt mongol autentico Mafra' (5,5 m, 8.000 EUR) - "
+                       "https://www.olx.pt/d/anuncio/yurt-mongol-autntico-IDIR7sZ.html"))
+note.alignment = Alignment(wrap_text=True, vertical="top")
+note.font = Font(italic=True, color="666666")
+ws7.merge_cells(start_row=note_row, start_column=1, end_row=note_row, end_column=10)
+ws7.row_dimensions[note_row].height = 32
+
+note2 = ws7.cell(row=note_row + 2, column=1,
+                 value=("WICHTIG: OLX-Angebote aendern sich taeglich. Vor Anfrage Live-Suche unter "
+                        "https://www.olx.pt/moveis-casa-e-jardim/jardim-e-bricolage/q-yurts/ "
+                        "pruefen. Recherche-Stand: 2026-05-11."))
+note2.alignment = Alignment(wrap_text=True, vertical="top")
+note2.font = Font(italic=True, color="666666")
+ws7.merge_cells(start_row=note_row + 2, start_column=1, end_row=note_row + 2, end_column=10)
+ws7.row_dimensions[note_row + 2].height = 32
 
 
 # Speichern
