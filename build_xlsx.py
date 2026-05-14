@@ -880,6 +880,760 @@ ws7.merge_cells(start_row=note_row + 2, start_column=1, end_row=note_row + 2, en
 ws7.row_dimensions[note_row + 2].height = 32
 
 
+# ============================================================
+# ============ DIY EIGENBAU 8m JURTE FUER ALGARVE ============
+# ============================================================
+# Annahmen Sebastian (Mai 2026):
+# - 8 m Durchmesser (~50 m2 Wohnflaeche)
+# - Tono (Kronenring) fertig vom Lieferanten
+# - Aussenplane Sauleda Solar Pro / Tempotest als Massanfertigung
+# - Skill mittel (DIY, Holz schon mal bearbeitet)
+# - Standort: Westliche Algarve 8650 (Aljezur), atlantisches Mikroklima
+
+
+# ---------- Sheet 8: DIY Bauplan Uebersicht ----------
+ws8 = wb.create_sheet("DIY 8 Bauplan Uebersicht")
+ws8.column_dimensions["A"].width = 28
+ws8.column_dimensions["B"].width = 22
+ws8.column_dimensions["C"].width = 72
+
+t = ws8.cell(row=1, column=1, value="DIY 8m Jurte - Konstruktionsuebersicht (Algarve-optimiert)")
+t.font = TITLE_FONT
+ws8.merge_cells("A1:C1")
+ws8.row_dimensions[1].height = 28
+
+bauplan = [
+    ("Gesamtgeometrie", "", ""),
+    ("Durchmesser", "8,00 m", "Aussenmass Khaana ausgebreitet, plus 100 mm Plane-Ueberlappung pro Seite"),
+    ("Wandhoehe (Khaana)", "2,00 m", "Casa-dos-Sonhos-Standard (vs. mongolisch traditionell 1,60-1,70 m) - mehr Stehhoehe + bessere Belueftung"),
+    ("Hoehe Mittelring (Tono)", "4,20 m", "Ueber Plattform-Oberkante; Dachneigung am Eaves ca. 28-30 Grad"),
+    ("Tono-Durchmesser", "1,20 m", "Standard fuer 8m-Jurten mit ~60 Dachstangen"),
+    ("Anzahl Khaana-Sektionen", "8", "Jede Sektion ca. 3,14 m breit ausgebreitet (= pi * 8m / 8)"),
+    ("Anzahl Dachstangen (Uni)", "60", "Alle 6 Grad = 60 mm Abstand am Tono"),
+    ("Wohnflaeche innen", "~50 m2", "Inkl. 1,2 m Tono-Saeule-frei -> volle Fussbodenflaeche nutzbar"),
+
+    ("", "", ""),
+    ("Konstruktionsprinzip", "", ""),
+    ("Bauweise", "Traditionelle Khaana mit Tono+Uni", "Selbsttragend ohne Mittelsaeule - Wandgitter haelt unter Druck der Dachstangen-Schubspannung. Zwingend: stabiles Spannband (Kuriye) auf Wandkronenhoehe."),
+    ("Statik-Prinzip", "Druckring + Zugring", "Tono = Druckring (Dachstangen druecken nach innen). Spannband um Khaana-Top = Zugring (haelt Wand gegen Schub). Funktioniert seit 3000 Jahren."),
+    ("Sturmsicherung Algarve", "Sturm-Kit dringend", "Atlantik-Winterstuerme 80-100 km/h. Erdanker an 8 Punkten unter Plattform, 5-Tonnen Ratschen-Riemen ueber Aussenplane, Wand+Dach-Verstaerkung mit zusaetzlichen Querstaeben."),
+
+    ("", "", ""),
+    ("Aufbau Schichten (innen nach aussen)", "", ""),
+    ("Schicht 1 - Khaana-Rahmen", "Edelkastanie 30x10 mm", "Lokal in PT verfuegbar, naturlich tannin-/insektenresistent durch Gerbsaeure - Termiten-Schutz."),
+    ("Schicht 2 - Innenliner", "Baumwoll-Stoff 200 g/m2", "Aesthetisch + faengt Daemmwolle ein. Maemost in PT bei Sattlerei beziehbar."),
+    ("Schicht 3 - Daemmung", "Schafwollfilz 16 mm (ISOLENA)", "100% Wolle Ionic Protect, schimmelresistent, oeko. 50 m2 fuer Wand + 50 m2 fuer Dach = 100 m2 Gesamtbedarf."),
+    ("Schicht 4 - Atmungsoffene Membran", "Solitex Plus / Tyvek 'Soft'", "OPTIONAL aber dringend empfohlen: zwischen Daemmung und Aussenplane, verhindert Kondensat in der Daemmwolle. Sebastian hat das auch bei Atilla geplant."),
+    ("Schicht 5 - Aussenplane", "Sauleda Solar Pro Acryl", "Marine-grade UV, salzluftbestaendig, atmungsaktiv, 290-340 g/m2. ca. 110 m2 Bedarf (Dach + Wand + Ueberlappung)."),
+
+    ("", "", ""),
+    ("Holzwahl - Algarve-optimiert", "", ""),
+    ("Khaana (Lattengitter)", "Edelkastanie (Castanho)", "Lokal in PT (Norden+Centro). Tannin-haltig = natuerlicher Termiten-/Insektenschutz. Leicht zu biegen, gut sägbar. Klasse 2 Dauerhaftigkeit nach EN 350."),
+    ("Uni (Dachstangen)", "Sibirische Laerche", "Hohe Festigkeit bei geringem Gewicht, harzhaltig = rotresistent. Aus AT/RU-Import via DE oder direkt von Siero Lam (ES/PT). Klasse 3-4 Dauerhaftigkeit."),
+    ("Tono (Kronenring)", "Gekauft - Hartholz", "Lieferant macht Wahl (typisch Eiche oder Esche laminiert). Achtung: Kontaktpartner fuer ALLE Bohrungen, weil die Geometrie 1.200 mm + 60 Bohrungen nicht einfach zu replizieren ist."),
+    ("Tuerrahmen + Tuer", "Robinie / Falsche Akazie", "Klasse 1-2 Dauerhaftigkeit (auch ohne Behandlung), extrem hart, salzwasserresistent. Aus AT/HU-Import. Alternative: portugiesische Edelkastanie."),
+    ("Plattform-Konstruktion", "Druckimpr. Kiefer + Laerchen-Deck", "Tragbalken Kiefer KDI (Klasse 4 Dauerhaftigkeit fuer Bodennaehe), Decke Laerche fuer Optik+Klima. Alternativ Robinie als Premium."),
+    ("Plattform-Schraubpfaehle", "Stahl verzinkt Krinner / Stop", "Erdschrauben 800-1.000 mm tief, 8 Stueck fuer 8m-Plattform. Loest die Frage 'Beton oder nicht' (du wolltest keinen Beton)."),
+
+    ("", "", ""),
+    ("Plane / Aussenhuelle", "", ""),
+    ("Material", "Sauleda Solar Pro 300 g/m2 (Acryl)", "Spanischer Hersteller seit 1897, Marine-grade. Solrain-Variante zusaetzlich impraegniert."),
+    ("Alternative Tempotest Parà (IT)", "Tempotest Marine 290 g/m2", "Italienisches Premium, 6-J. Farbtreue-Garantie, Teflon EXTREME Finish. Vergleichbar Sauleda."),
+    ("Auftragsfertigung", "Lokaler Persenningmacher / Sattlerei in PT", "Du lieferst die Stoffrolle, der Fachbetrieb naeht zu. Suchbegriffe PT: 'oficina de toldos', 'velejaria' (Sailmaker), 'persenning'."),
+    ("Aussenflaeche Gesamt", "~110 m2 (mit Ueberlappung)", "Dach: 50 m2 Kegelmantel + 10% Ueberlappung. Wand: 8 x pi x 2,2 m = 55 m2. Plus Verschnitt 15% Reserve."),
+    ("Plane-Lebensdauer", "10-15 Jahre", "Sauleda/Tempotest mit Schattennetz darueber. OHNE Schattennetz in Algarve: 5-8 Jahre realistic."),
+
+    ("", "", ""),
+    ("Plattform / Foundation", "", ""),
+    ("Typ", "Geschraubte Pfahl-Plattform", "Krinner-Schraubpfaehle KSF-M 800mm. Kein Beton. Reversibel. Belueftung darunter verhindert Feuchte+Termiten."),
+    ("Tragwerk", "Doppel-T aus 50x200 mm Kiefer KDI", "Konzentrische Rahmen-Konstruktion + radiale Balken alle 45 Grad."),
+    ("Bodenaufbau (innen nach aussen)", "Estrich-Vlies + Kork 30mm + Laerchen-Deck 27mm", "Trittschall, Kaelte-Pufferung, schoene Optik. Kork = portugiesisches Material par excellence."),
+    ("Diameter", "8,20 m (10 cm Ueberstand)", "Verhindert Regenwasser-Hochzug ins Innere; passt Plane-Wand-Saum exakt."),
+]
+
+for r_idx, (a, b, c) in enumerate(bauplan, 2):
+    if a and not b and not c:
+        # Sektions-Header
+        cell = ws8.cell(row=r_idx, column=1, value=a)
+        cell.font = Font(bold=True, size=12, color="2E5C8A")
+        ws8.merge_cells(start_row=r_idx, start_column=1, end_row=r_idx, end_column=3)
+        ws8.row_dimensions[r_idx].height = 22
+    elif not a and not b and not c:
+        ws8.row_dimensions[r_idx].height = 8
+    else:
+        ws8.cell(row=r_idx, column=1, value=a).font = Font(bold=True)
+        ws8.cell(row=r_idx, column=2, value=b)
+        ws8.cell(row=r_idx, column=3, value=c).alignment = Alignment(wrap_text=True, vertical="top")
+        for col in (1, 2, 3):
+            ws8.cell(row=r_idx, column=col).border = BORDER
+            ws8.cell(row=r_idx, column=col).alignment = Alignment(wrap_text=True, vertical="top")
+        ws8.row_dimensions[r_idx].height = max(20, min(60, 15 + len(c) // 6))
+
+ws8.freeze_panes = "A2"
+
+
+# ---------- Sheet 9: DIY Materialliste ----------
+ws9 = wb.create_sheet("DIY 9 Materialliste")
+headers9 = ["Position", "Bauteil", "Material/Spezifikation", "Menge", "Einheit",
+            "Einzelpreis EUR", "Gesamtpreis EUR", "Bezugsquelle Vorschlag", "Bemerkung"]
+
+# Berechnungs-Basis fuer 8m Yurte
+material = [
+    # KHAANA (Lattengitter Wand)
+    ["1.0", "Khaana Latten Edelkastanie", "30x10 mm, getrocknet, gehobelt, 2,1 m Laenge",
+     280, "Stueck", 4.50, 1260,
+     "Mil Martins & Irmao (PT-Norden) / Industria de Madeiras / Albano Leite",
+     "8 Sektionen x ~35 Latten/Sektion. 10% Verschnitt eingerechnet. Wahlweise auch in 30x12 mm fuer mehr Stabilitaet."],
+    ["1.1", "Khaana Nieten/Bolzen", "M5 x 30 mm Senkkopf Edelstahl A4 + Hutmuttern",
+     350, "Stueck", 0.20, 70,
+     "Wuerth PT / Bauhaus PT / Schraubenking.de",
+     "Pro Khaana-Kreuzung 1 Bolzen. ~38 Kreuzungen pro Sektion * 8 = 304 + Reserve."],
+    ["1.2", "Khaana Hanfband / Lederband", "Hanfgurt 25 mm breit ODER Leder-Streifen",
+     50, "Meter", 2.50, 125,
+     "tipiwakan.com / handweber-PT / Saddlery Lousa",
+     "Optional fuer traditionelle Optik statt Bolzen. Sebastian: Bolzen empfohlen (haltbarer in Salzluft)."],
+
+    # TONO (Kronenring) - GEKAUFT
+    ["2.0", "Tono - Kronenring fertig", "1,20 m Durchmesser, 60 Bohrungen für Uni, Eiche/Esche laminiert",
+     1, "Stueck", 750, 750,
+     "Camping Yurts (UK) / FAMTENTS (CZ) / Adorjan Jurta (HU) / Atilla (HU)",
+     "Inkl. Sicherheitslackierung und Bohrungen. Versand DE/HU->PT ca. 150-300 EUR extra."],
+    ["2.1", "Tono Versand nach PT", "Spedition Übermass",
+     1, "Pauschal", 250, 250,
+     "Logistik-Anbieter Wahl Lieferant",
+     "Bei Anfrage einkalkulieren."],
+
+    # UNI (Dachstangen)
+    ["3.0", "Uni Dachstangen Sibir. Laerche", "30x30 mm gehobelt, 4,0 m Laenge, leicht gebogen",
+     65, "Stueck", 12, 780,
+     "Holz Schiller AT / Siero Lam (PT) / Holz Possling DE",
+     "60 + 5 Reserve. Konisch oder gerade. Wenn gerade: muss am unteren Ende leicht angefast werden fuer den Khaana-Sattel."],
+    ["3.1", "Uni-Befestigung am Tono", "Edelstahl-Niet M6 x 40 mm A4",
+     65, "Stueck", 0.80, 52,
+     "Wuerth PT / Bauhaus",
+     "Eine Bohrung im Uni-Kopf + Tono-Bohrung verbinden."],
+    ["3.2", "Uni-Auflage auf Khaana", "Lederband / Hanfschlaufe alle 60 cm an Wandkrone",
+     50, "Meter", 3, 150,
+     "Sattlerei PT / Lederhandwerk",
+     "Pro Sektion 8 Uni werden aufgelegt. Bestens: durchgehende Schlaufen-Schnur (Kuriye-Funktion)."],
+
+    # KURIYE (Spannband)
+    ["4.0", "Kuriye - Spannband Wandkrone", "Polypropylen-Gurt 50 mm, 8 Tonnen Zugfest",
+     30, "Meter", 4, 120,
+     "Industriebedarf PT / Wuerth / Schraubenking.de",
+     "2 komplette Umrundungen (8m Durchmesser * pi = 25,1 m je Lage). Mit Klemmschnalle."],
+    ["4.1", "Spannschloesser Edelstahl", "M10 Spannschloss A4",
+     4, "Stueck", 18, 72,
+     "Wuerth / Bootsbedarf PT (Acastillaje)",
+     "An 4 Stellen Spannung einstellbar."],
+
+    # TUER
+    ["5.0", "Tuerrahmen Robinie", "Pfosten 100x100 mm, Sturz 100x150 mm",
+     12, "Meter", 25, 300,
+     "Holz Henkel AT / Forstamt PT / Holz Schiller",
+     "Trockene Robinie, gehobelt. Alternative PT: Edelkastanie Bohlenware."],
+    ["5.1", "Tuerblatt Doppeltuer", "2x je 90x200 cm Robinie/Eiche mit Doppelverglasung",
+     1, "Set", 800, 800,
+     "Lokale Schreinerei PT (Tischlerei) / Bauhaus IKEA-Tueren als Basis",
+     "Selber bauen oder bei lokalem Tischler in PT in Auftrag geben. UPVC waere guenstiger aber waermer."],
+    ["5.2", "Tuerbeschlaege Edelstahl A4", "Bandscharniere x 6 + Schloss + Drueckergarnitur",
+     1, "Set", 250, 250,
+     "Wuerth PT / Brico Marche",
+     "A4 statt A2 wegen Salzluft."],
+
+    # PLATTFORM
+    ["6.0", "Schraubpfaehle Krinner KSF-M", "M-Profil, 800 mm Laenge, verzinkt",
+     8, "Stueck", 35, 280,
+     "Krinner GmbH DE / Bauhaus PT / Acreditados.pt",
+     "Statt Beton. 8 Punkte alle 45 Grad auf 8m-Kreis."],
+    ["6.1", "Tragbalken Kiefer KDI Klasse 4", "50 x 200 mm, 4,0 m Laenge",
+     20, "Stueck", 28, 560,
+     "Leroy Merlin PT / AKI / lokales Saege-werk",
+     "Doppel-T-Rahmen + Radial-Balken. KDI = Kesseldruckimpragniert."],
+    ["6.2", "Laerchen-Deck T+G", "27 x 137 mm Nut+Feder, 4 m Laenge",
+     50, "m2", 38, 1900,
+     "Mil Martins / Maderterraneo (ES) / Holz Possling",
+     "ca. 50 m2 zu verlegen plus 10% Verschnitt."],
+    ["6.3", "Kork-Daemmung Plattform", "30 mm gepresst Naturkork",
+     50, "m2", 18, 900,
+     "Amorim Cork (PT national) / Sofalca / Maderterraneo",
+     "Portugiesisches Material par excellence. Zwischen Tragbalken und Decke."],
+    ["6.4", "Estrich-Vlies + Dampfsperre", "PE Folie 200 my + Geo-Vlies 300 g/m2",
+     50, "m2", 4, 200,
+     "Bauhaus PT / AKI",
+     "Unter Plattform gegen aufsteigende Feuchte."],
+    ["6.5", "Plattform-Schrauben Edelstahl", "Spax A4 5x80 mm + 4x50 mm",
+     1, "Pauschal", 200, 200,
+     "Wuerth PT / Schraubenking.de",
+     "A4 wegen Salzluft. Pauschal Sortiment."],
+
+    # DAEMMUNG WAND+DACH
+    ["7.0", "Schafwollfilz Isolena 16 mm", "100% Schafwolle Ionic Protect, 1,2 m breit",
+     105, "m2", 16, 1680,
+     "ISOLENA AT direkt / baustoffplus.de / DAEMWOOL AT",
+     "Wand 55 m2 + Dach 50 m2 = 105 m2. Bei Bestellung in DE: USt-IdNr nutzen fuer IC-Lieferung."],
+    ["7.1", "Innenliner Baumwoll-Sergeant", "200 g/m2, naturweiss/decorativ, 1,5 m breit",
+     65, "m2", 12, 780,
+     "Toldum.es / Sattlerei PT / Stoffhandel-Industrie",
+     "Wand 55 m2 + Dach 50 m2 - Verschnitt = 65 m2 Stoffbedarf bei Verzug. Wird unterhalb Filz montiert."],
+
+    # ATMUNGSAKTIVE MEMBRAN
+    ["8.0", "Membran Solitex Plus / Tyvek Soft", "Diffusionsoffen, wasserdicht, 1,5 m breit",
+     115, "m2", 6, 690,
+     "Pro Clima AT / Tyvek via Bauhaus PT",
+     "Zwischen Filz und Aussenplane. WICHTIG fuer Algarve: verhindert Kondensat in Daemmwolle."],
+
+    # AUSSENPLANE (gekauft als Service)
+    ["9.0", "Aussenplane MASSANFERTIG", "Sauleda Solar Pro 300 g/m2 / oder Tempotest Marine, Beige/Sand",
+     1, "Set", 3500, 3500,
+     "Coartal (ES Sauleda Distri) / Lokaler Persenningmacher PT / Yurt Workshop ES (Cadiar)",
+     "Komplett-Set: Dach + Wand + Kuppel-Cover. Inkl. Saeume, Tunnel fuer Spannband, Verstaerkungen an Eaves. Sturm-Kit-Option (Verstaerkte Eckpunkte) +200 EUR."],
+    ["9.1", "Kuppel-Oberlicht (Polycarbonat)", "Klar, oeffenbar, 1,2 m Durchmesser",
+     1, "Stueck", 750, 750,
+     "Bauhaus PT / Atilla Jurte (HU) / Custom",
+     "Wahlweise von Tono-Lieferant gleich mitbestellen."],
+
+    # STURM-KIT
+    ["10.0", "Erdanker Sturm-Kit", "Schraubanker M16 1.000 mm + Stahlseil 6 mm",
+     8, "Stueck", 35, 280,
+     "Krinner / Wuerth PT",
+     "Algarve-Atlantik OBLIGATORISCH. 8 Anker um Plattform, Seil ueber Dach gespannt."],
+    ["10.1", "Ratschen-Riemen 5 Tonnen", "Polypropylen 50 mm / 8 m Laenge",
+     8, "Stueck", 22, 176,
+     "Wuerth PT",
+     "Pro Erdanker 1 Ratsche."],
+
+    # OFENROHR (optional aber empfohlen)
+    ["11.0", "Kaminzug-Durchfuehrung", "Hitze-Manschette Silikon 600 Grad C, Adapter 150 mm",
+     1, "Set", 280, 280,
+     "Ofenbedarf PT / Heimdesign DE / Bauhaus",
+     "Falls Holzofen geplant. Silikon hitzefest, an Plane verschweissbar."],
+
+    # WERKZEUG (siehe Sheet 12)
+    ["12.0", "Werkzeug-Pauschale", "siehe Sheet 'DIY 12 Werkzeuge'",
+     1, "Pauschal", 800, 800,
+     "Mietkauf / lokale Vermietung",
+     "Inkl. Tischkreissaege Miete, Bohrer-Aufsaetze, Hobel-Verleih, Sicherheitsausruestung."],
+
+    # NEBENKOSTEN
+    ["13.0", "Schattennetz Algarve", "6 m breit, 90% Sonnenschutz",
+     60, "m2", 4, 240,
+     "Agrar-Kooperative Algarve / Cooperativa Agricola",
+     "WICHTIG fuer Algarve. Ueber Plane gespannt = verdoppelt Plane-Lebensdauer."],
+    ["13.1", "Reserve / Unvorhergesehenes", "10% des Materialbudgets",
+     1, "Pauschal", 1500, 1500,
+     "-",
+     "Schrauben-Nachkauf, Reparaturen, Lieferzuschlaege."],
+]
+
+# Style Sheet 9
+for col, h in enumerate(headers9, 1):
+    c = ws9.cell(row=1, column=col, value=h)
+    c.fill = HEADER_FILL
+    c.font = HEADER_FONT
+    c.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+    c.border = BORDER
+for r_idx, row in enumerate(material, 2):
+    for c_idx, val in enumerate(row, 1):
+        cell = ws9.cell(row=r_idx, column=c_idx, value=val)
+        cell.alignment = Alignment(vertical="top", wrap_text=True)
+        cell.border = BORDER
+        if r_idx % 2 == 0:
+            cell.fill = ALT_FILL
+
+# Summenzeile
+sum_row = len(material) + 2
+total_eur = sum(r[6] for r in material)
+ws9.cell(row=sum_row, column=6, value="GESAMTKOSTEN").font = Font(bold=True)
+ws9.cell(row=sum_row, column=7, value=total_eur).font = Font(bold=True, size=12, color="2E5C8A")
+for col in range(1, 10):
+    ws9.cell(row=sum_row, column=col).border = BORDER
+
+widths9 = [8, 28, 38, 9, 9, 14, 14, 38, 50]
+for i, w in enumerate(widths9, 1):
+    ws9.column_dimensions[get_column_letter(i)].width = w
+ws9.row_dimensions[1].height = 30
+ws9.freeze_panes = "A2"
+
+
+# ---------- Sheet 10: DIY Beschaffungsquellen ----------
+ws10 = wb.create_sheet("DIY 10 Quellen")
+headers10 = ["Kategorie", "Anbieter", "Land", "Spezialisierung", "Website / Kontakt",
+             "Liefert nach PT?", "Anmerkung Algarve-Tauglichkeit"]
+quellen = [
+    # HOLZ
+    ["Holz", "Mil Martins & Irmao", "PT (Norden)", "Edelkastanie, Eiche, Pinie",
+     "https://www.milmartinsirmao.pt/",
+     "Innerhalb PT",
+     "Etablierte Saegerei, Castanho Premium getrocknet. Anfrage per Mail."],
+    ["Holz", "Industria de Madeiras", "PT", "Castanho-Handel, Industrie",
+     "https://www.industriademadeiras.com/",
+     "Innerhalb PT", "Castanho-Bohlen, Latten zuschneiden lassen moeglich."],
+    ["Holz", "Albano Leite da Silva", "PT", "Allgemeine Saegerei",
+     "https://www.albanoleitesilva.pt/", "Innerhalb PT",
+     "Castanho + Pinie + Eukalyptus, KDI Behandlung verfuegbar."],
+    ["Holz", "Maderterraneo", "ES", "Castanho Boden, Laerche, EU-Premium",
+     "https://maderterraneo.com/", "Ja, Versand ES->PT",
+     "Boden-Komponente Laerche/Castanho premium. Online-Bestellung."],
+    ["Holz", "Siero Lam", "ES (Asturien)", "Castanho-Bohlen Massivholz",
+     "https://www.sierolam.com/pt-pt/madeira-tabua/", "Ja, EU-Spedition",
+     "Spanischer Marktfuehrer Edelkastanie. Versand PT moeglich."],
+    ["Holz", "Holz Schiller AT", "AT", "Sibir. Laerche, Robinie",
+     "https://www.holz-schiller.at/", "Ja, EU-Spedition 200-400 EUR",
+     "Premium-Importeur, online bestellbar, USt-IdNr noetig fuer IC."],
+    ["Holz", "Holz Henkel AT", "AT", "Robinie, Eiche, Esche",
+     "https://www.holz-henkel.com/", "Ja, EU-Spedition",
+     "Robinie fuer Tuer-Konstruktion, sehr salzwasserresistent."],
+    ["Holz", "Holz Possling DE", "DE", "Sibir. Laerche, Uni-Material",
+     "https://www.holzpossling.de/", "Ja, ueber Spedition",
+     "Online-Shop mit DE-Preisen. Versand nach PT moeglich."],
+
+    # KORK
+    ["Daemmung-Kork", "Amorim Cork", "PT (national)", "Welt-Markt-fuehrer Kork",
+     "https://www.amorim.com/", "Innerhalb PT, Hauptsitz",
+     "PT-Heimspiel. Korkboden 30mm direkt vom Hersteller anfragen."],
+    ["Daemmung-Kork", "Sofalca", "PT", "Expandierter Naturkork",
+     "https://www.sofalca.pt/", "Innerhalb PT",
+     "ICB-Korkplatten, fuer Plattform-Daemmung optimal."],
+
+    # WOLLFILZ
+    ["Daemmung-Wolle", "ISOLENA AT", "AT (Burgenland)", "Schafwoll-Daemmung Premium",
+     "https://www.isolena.com/", "Ja, EU-Spedition + USt-IdNr",
+     "100% Wolle Ionic Protect 16mm. Direkt-Bestellung."],
+    ["Daemmung-Wolle", "DAEMWOOL AT", "AT", "Schafwoll-Jurtenfilz",
+     "https://www.daemwool.at/", "Ja, EU-Spedition",
+     "Spezialisiert auf Jurten-Anwendung. 8 oder 16mm verfuegbar."],
+    ["Daemmung-Wolle", "Tobias Tumfart Schafwolldaemmung", "AT", "Jurtefilz 8/16 mm",
+     "https://www.schafwolldaemmung.at/", "Ja, EU-Spedition",
+     "Preis 8mm = 8,16 EUR/m2 (excl VAT). Massmade verfuegbar."],
+    ["Daemmung-Wolle", "Wollwerkstatt AT", "AT", "Nadelfilz nach Mass",
+     "https://www.wollwerkstatt.at/", "Ja", "Online-Konfigurator, Auf-Bestellung."],
+
+    # PLANE / FACHBETRIEB
+    ["Plane", "Sauleda S.A.", "ES (Barcelona)", "Solar Pro / Nautic Acryl 125+ Jahre",
+     "https://sauleda.com/", "Ja, B2B-Anfrage",
+     "Hersteller selbst, Distributoren-Liste in PT anfragen."],
+    ["Plane", "Coartal (Sauleda PT-Distri)", "PT (zu pruefen)", "Sauleda-Stoffe Vertrieb",
+     "https://www.coartal.com/files/Catlogo-Acrlico-Sauleda.pdf", "Ja",
+     "Lokaler Vertrieb der Sauleda-Produkte, direkt anfragen."],
+    ["Plane", "Toldum.es", "ES (Murcia)", "Sauleda + Markenstoffe online",
+     "https://www.toldum.com/nuestros-productos/lonas-y-tejidos/sauleda/",
+     "Ja", "Online-Vertrieb auch Stoff-Rollen, EU-Versand."],
+    ["Plane", "Parà Tempotest", "IT", "Tempotest Marine Acryl 6J-Garantie",
+     "https://www.para.it/en/", "Ja, Distributor-Liste",
+     "Alternative zu Sauleda, oft etwas teurer aber Teflon-Finish."],
+    ["Plane-Fachbetrieb", "Yurt Workshop Spain (Cadiar)", "ES (Granada)", "Jurten-Plane Massanfertigung",
+     "http://yurtworkshop.es/", "Ja, ES->PT 600-1.200 EUR",
+     "Rob Matthews kann Plane separat fertigen. Erfahrung mit Sebastian's Klima."],
+    ["Plane-Fachbetrieb", "Atilla Jurtak (HU)", "HU", "Sauleda PVC + Airtex Acryl Set",
+     "https://jurtak.hu/", "Ja, HU->PT 3.500 EUR Spedition",
+     "Komplettes Cover 8m = 2.200 EUR netto, sehr guter Preis. Versand teurer."],
+    ["Plane-Fachbetrieb", "Lokaler Persenningmacher PT", "PT", "Auftragsnaeherei",
+     "Suche: 'oficina de toldos Algarve', 'velejaria PT'", "Innerhalb PT",
+     "Du lieferst Stoff, sie naehen. Risiko: noch nie Jurte genaht. Skizzen mitbringen."],
+
+    # TONO (Kronenring)
+    ["Tono", "Camping Yurts", "UK", "Tono fertig gebohrt",
+     "https://www.campingyurts.com/yurt-parts/", "Ja, UK->PT post-Brexit Zoll",
+     "Pre-drilled, sealed, varnished. Direkt online bestellbar."],
+    ["Tono", "Groovy Yurts (CA, exportiert global)", "CA", "Sibir.-Kiefer Tono Mongolian-style",
+     "https://www.groovyyurts.com/accessories-and-add-ons/toono-dome", "Versand teuer",
+     "Authentisch mongolisch, eher teuer fuer EU."],
+    ["Tono", "FAMTENTS", "CZ", "Tschechische Laerche Tono",
+     "https://www.famtents.com/yurts", "Ja, EU-Spedition",
+     "Premium-Hersteller EU, Tono separat anfragen."],
+    ["Tono", "Atilla Jurtak (HU)", "HU", "Tono separat moeglich (Anfrage)",
+     "https://jurtak.hu/", "Ja, HU-Versand", "Custom in Hartholz. Anfragen ob er nur Tono+Uni verkauft."],
+    ["Tono", "Adorjan Jurta (HU)", "HU", "Tradi. mongolisch Tono",
+     "https://adorjan-jurta.hu/", "Ja, HU-Versand", "Hartholz, traditionell, lange Lieferzeit (bookings 1J voraus)."],
+
+    # SCHRAUBPFAHL / FOUNDATION
+    ["Schraubpfaehle", "Krinner GmbH", "DE", "Schraubpfaehle Marktfuehrer",
+     "https://www.krinner.de/", "Ja, EU-Spedition",
+     "KSF-M Profil 800-1000 mm, alle EU-baurelevanten Zulassungen."],
+    ["Schraubpfaehle", "Stop Schraubfundamente", "DE", "Alternative zu Krinner",
+     "https://www.stop-schraubfundamente.de/", "Ja, EU-Spedition", "Etwas guenstiger als Krinner."],
+    ["Schraubpfaehle", "Bauhaus / Leroy Merlin PT", "PT", "Krinner-Lager+Vertrieb",
+     "https://www.bauhaus.pt/  |  https://www.leroymerlin.pt/", "Innerhalb PT",
+     "Lokales Lager, schneller als DE-Direkt."],
+
+    # BESCHLAEGE
+    ["Beschlaege", "Wuerth Portugal", "PT", "Industrie-Schrauben/Beschlaege",
+     "https://www.wurth.pt/", "Innerhalb PT, oft Same-Day",
+     "Edelstahl A4 fuer Algarve obligatorisch. Schraubenmusterbox empfehlenswert."],
+    ["Beschlaege", "Bauhaus PT", "PT", "DIY-Sortiment",
+     "https://www.bauhaus.pt/", "Innerhalb PT",
+     "Gut fuer Standard-Sortiment. A4-Schrauben anfragen."],
+    ["Beschlaege", "Brico Marche", "PT", "DIY landesweit",
+     "https://www.bricomarche.pt/", "Innerhalb PT", "Bauhaus-Alternative."],
+    ["Beschlaege", "Acastillaje (Bootsbedarf)", "PT", "Marine-Edelstahl Spannschloss",
+     "Suche 'acastillaje algarve'", "Lokal", "Spezialisiert auf Salzluft. Spannschlossglieder, Edelstahl-Karabiner."],
+
+    # WERKZEUG
+    ["Werkzeug-Verleih", "Bauhaus PT Mietservice", "PT", "Tischkreissaege, Bohrer-Profi",
+     "https://www.bauhaus.pt/leihservice", "Lokal", "Tages-/Wochenmiete. Tischkreissaege 25-40 EUR/Tag."],
+    ["Werkzeug-Verleih", "Lokale Aluguer-Equipamentos Algarve", "PT", "Bau-Maschinen-Verleih",
+     "Suche 'aluguer equipamentos Algarve'", "Lokal", "Oft Wochenpakete guenstiger."],
+
+    # LITERATUR / PLANS
+    ["Literatur", "Paul King - The Complete Yurt Handbook", "UK", "Standard-Werk Bauanleitung",
+     "Amazon / Yurtinfo.org", "PDF/Print", "ca. 25 EUR. Pflichtlektuere fuer DIY. Kein 8m-Plan, aber Skalierungs-Anleitung."],
+    ["Literatur", "Paul King - Build Your Own Yurt (kostenloses PDF)", "UK", "Frueheres Werk, online",
+     "https://azinelibrary.org/approved/build-your-own-yurt-1.pdf",
+     "PDF kostenlos", "Aelter aber kostenlos. 3m Yurte als Skalierungs-Basis."],
+    ["Literatur", "SimplyDifferently Yurt Calculator", "Web", "Onlinerechner Bemassung",
+     "https://simplydifferently.org/Yurt_Notes", "kostenlos",
+     "GOLD-STANDARD: Exakte Bohrwinkel, Latten-Anzahlen, Uni-Laengen fuer beliebige Durchmesser."],
+    ["Literatur", "Yurt Forum Community", "Web", "DIY-Erfahrungsaustausch",
+     "https://www.yurtforum.com/", "kostenlos", "Stelle Fragen, Bilder, Detail-Probleme."],
+    ["Literatur", "Doit Yurtself", "Web", "DIY-Schritte, Tipps",
+     "https://doityurtself.com/", "kostenlos", "Schreibblog mit Foto-Doku eines Komplett-Baus."],
+    ["Literatur", "Yurt Plans Library DryUrts", "Web", "Plaene zum Kauf",
+     "https://www.dryurts.com/yurt-plans.html", "ca. 20-50 USD", "Mehrere Yurten-Plaene downloadbar."],
+
+    # SCHATTENNETZ
+    ["Schattennetz", "Cooperativa Agricola Algarve", "PT (lokal)", "Agrar-Schattennetz 90%",
+     "Lokal vor Ort suchen z.B. Sao Bras de Alportel, Lagos", "Innerhalb PT",
+     "Wichtigster Algarve-Tipp! 6m Breite Standard, 4-8 EUR/m2."],
+]
+
+for col, h in enumerate(headers10, 1):
+    c = ws10.cell(row=1, column=col, value=h)
+    c.fill = HEADER_FILL
+    c.font = HEADER_FONT
+    c.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+    c.border = BORDER
+for r_idx, row in enumerate(quellen, 2):
+    for c_idx, val in enumerate(row, 1):
+        cell = ws10.cell(row=r_idx, column=c_idx, value=val)
+        cell.alignment = Alignment(vertical="top", wrap_text=True)
+        cell.border = BORDER
+        if r_idx % 2 == 0:
+            cell.fill = ALT_FILL
+widths10 = [16, 30, 14, 32, 50, 28, 50]
+for i, w in enumerate(widths10, 1):
+    ws10.column_dimensions[get_column_letter(i)].width = w
+ws10.row_dimensions[1].height = 30
+ws10.freeze_panes = "A2"
+
+
+# ---------- Sheet 11: DIY Arbeitsschritte ----------
+ws11 = wb.create_sheet("DIY 11 Arbeitsschritte")
+headers11 = ["Phase", "Woche", "Aufgabe", "Dauer", "Werkzeug", "Material", "Output"]
+schritte = [
+    ["Vorbereitung", "Woche 0", "Pläne und Buch besorgen, SimplyDifferently durchrechnen",
+     "2-3 Tage", "PC + Drucker",
+     "Paul King Buch, Bemassungs-Ausdrucke",
+     "Detail-Plan auf Papier mit allen Massen"],
+    ["Vorbereitung", "Woche 0", "Werkstattflaeche organisieren",
+     "1 Tag", "Massband",
+     "10x10 m flacher trockener Untergrund",
+     "Khaana kann komplett ausgebreitet werden"],
+    ["Vorbereitung", "Woche 0", "Material bestellen (lange Lieferzeit zuerst)",
+     "1 Tag",
+     "PC",
+     "Tono fertig (4-6 Wochen Lieferzeit), Wollfilz, Schraubpfaehle, Sauleda Plane Massanfertigung",
+     "Bestellungen raus, Lieferzeit-Plan"],
+    ["Vorbereitung", "Woche 0", "Werkzeug mieten/kaufen",
+     "1 Tag", "-",
+     "Tischkreissaege, Stichsaege, Akkuschrauber 18V, Bohrmaschine, Hobel, Bohraufsatz, Schraubzwingen",
+     "Werkstatt aufgeruestet"],
+    ["Standort", "Woche 1", "Standort markieren, Schraubpfaehle setzen",
+     "1 Tag", "Erdraketenwerkzeug oder hydraulische Eindrehhilfe",
+     "8 Krinner-Pfaehle, Wasserwaage",
+     "Plattform-Fundament ueber Boden, perfekt nivelliert"],
+    ["Standort", "Woche 1", "Plattform-Tragwerk bauen",
+     "2 Tage", "Tischkreissaege, Akkuschrauber",
+     "Kiefer KDI 50x200 Tragbalken, Edelstahl-Schrauben A4",
+     "Tragwerk fertig, Doppel-T-Rahmen + Radial-Balken"],
+    ["Standort", "Woche 1", "Plattform-Daemmung + Decke",
+     "1 Tag", "Cuttermesser, Akkuschrauber",
+     "Geo-Vlies, PE-Folie, Kork 30 mm, Laerchen-Deck T+G 27 mm",
+     "Plattform begehbar, isoliert"],
+
+    ["Khaana-Bau", "Woche 2", "Edelkastanie-Latten zuschneiden und hobeln",
+     "2 Tage", "Tischkreissaege, Hobel, Schleifer",
+     "280 Latten 30x10x2100 mm",
+     "Alle Latten fertig, gleichmaessig"],
+    ["Khaana-Bau", "Woche 2-3", "Bohrloch-Lehre bauen + alle Latten bohren",
+     "2 Tage", "Stationaer-Bohrer, selbstgebaute Bohrlehre",
+     "M5-Bohrer 5,2 mm, Schraubzwingen",
+     "Alle Latten gebohrt, max. 1 mm Toleranz"],
+    ["Khaana-Bau", "Woche 3", "Khaana-Sektionen zusammensetzen (Bolzen+Mutter)",
+     "3-4 Tage", "Akkuschrauber + 8mm-Steckschluessel",
+     "M5x30 Edelstahl Bolzen + Hutmuttern",
+     "8 Khaana-Sektionen klappbar, Vorabtest stehen lassen"],
+    ["Khaana-Bau", "Woche 3", "Khaana-Test: alle Sektionen verbinden + auf Plattform stellen",
+     "1 Tag", "2 Personen",
+     "Hanf-Schnur fuer temporaere Verbindung",
+     "Khaana steht im Kreis, Tono-Hoehe stimmt"],
+
+    ["Tono+Uni", "Woche 4", "Tono-Lieferung pruefen + nachbohren falls noetig",
+     "1 Tag", "Akkuschrauber, Schleifer",
+     "Sicherheitslack",
+     "Tono fertig fuer Uni-Aufnahme"],
+    ["Tono+Uni", "Woche 4", "Uni-Stangen zuschneiden, anschraegen",
+     "2 Tage", "Tischkreissaege, Anschlagwinkel, Hobel",
+     "65 Laerche 30x30x4000 mm",
+     "Alle 60 Uni-Stangen einsatzbereit"],
+    ["Tono+Uni", "Woche 4", "Uni-Schlaufen am Khaana-Wandkronenrand",
+     "1 Tag", "Sattler-Werkzeug, Schraubendreher",
+     "Lederband oder Hanfschlaufen",
+     "Sattel-Punkte fuer 60 Uni alle 60 cm"],
+    ["Tono+Uni", "Woche 4", "Test-Aufbau Tono+Uni (4-8 Helfer noetig!)",
+     "1 Tag", "Leitern, 4-8 Helfer",
+     "-",
+     "Erste komplette Skelett-Stehprobe"],
+
+    ["Spannband+Tuer", "Woche 5", "Kuriye-Spannband installieren",
+     "1 Tag", "Spannschlossglieder, Edelstahl-Karabiner",
+     "PP-Gurt 50mm 30m, 4 Spannschloesser",
+     "Wand-Spannband fixiert, Vorspannung gleichmaessig"],
+    ["Spannband+Tuer", "Woche 5", "Tuerrahmen einsetzen+ausrichten",
+     "1 Tag", "Wasserwaage, Akkuschrauber",
+     "Robinie-Rahmen 100x100 mm, A4-Schrauben",
+     "Tuer steht 90 Grad, schwingt frei"],
+    ["Spannband+Tuer", "Woche 5", "Tuerblatt einhaengen+justieren",
+     "1 Tag", "Bandscharnier-Schrauber",
+     "Tuerblatt 2x 90x200 cm + Beschlaege",
+     "Tuer schliesst sauber, kein Spalt"],
+
+    ["Daemmung+Plane", "Woche 6", "Innenliner befestigen",
+     "1 Tag", "Tacker, Naehnadel",
+     "Baumwoll-Sergeant 65 m2",
+     "Wand- und Dachsegmente innen mit Liner bezogen"],
+    ["Daemmung+Plane", "Woche 6", "Wollfilz auflegen (Wand+Dach)",
+     "1 Tag", "Cuttermesser",
+     "Wollfilz 16 mm, 105 m2",
+     "Innenseite komplett gedaemmt"],
+    ["Daemmung+Plane", "Woche 6", "Solitex-Membran ueber Daemmung",
+     "1 Tag", "Cuttermesser, Tacker",
+     "Solitex 115 m2",
+     "Dampfsperre installiert, ueberlappend +10 cm"],
+    ["Daemmung+Plane", "Woche 6", "Aussenplane aufziehen (Sauleda)",
+     "1-2 Tage", "Saugen+Leitern, 4 Helfer",
+     "Komplett-Plane 110 m2 inkl. Tunnel+Saeume",
+     "Yurte wetterfest!"],
+
+    ["Sturm-Kit", "Woche 7", "Erdanker Sturm-Kit einschrauben",
+     "1 Tag", "Erdraketenwerkzeug",
+     "8 M16 Anker 1.000 mm, Stahlseil 6 mm",
+     "Sturm-Verankerung aktiv"],
+    ["Sturm-Kit", "Woche 7", "Ratschen-Riemen ueber Dach spannen",
+     "0,5 Tag", "-",
+     "8 PP-Ratschen 5 Tonnen",
+     "Plane gegen Aufwehung gesichert"],
+    ["Sturm-Kit", "Woche 7", "Kaminzug-Durchfuehrung einbauen falls geplant",
+     "1 Tag", "Akkuschrauber, Silikon-Spachtel",
+     "Kaminzug-Manschette 600 Grad",
+     "Holzofen einsetzbar"],
+
+    ["Finale", "Woche 8", "Innen-Ausbau: Bett, Kueche, Boden-Teppich",
+     "Variabel", "-", "-", "Wohnfertig"],
+    ["Finale", "Woche 8", "Schattennetz ueber Dach spannen",
+     "0,5 Tag", "Leitern",
+     "Agrar-Schattennetz 90% 60 m2",
+     "Algarve-Hitze entschaerft, Plane-Lebensdauer +X Jahre"],
+    ["Finale", "Woche 8", "Foto-Doku + Wartungs-Checkliste",
+     "0,5 Tag", "Kamera", "-",
+     "Versicherung+Erinnerung+Dokumentation"],
+]
+
+for col, h in enumerate(headers11, 1):
+    c = ws11.cell(row=1, column=col, value=h)
+    c.fill = HEADER_FILL
+    c.font = HEADER_FONT
+    c.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+    c.border = BORDER
+for r_idx, row in enumerate(schritte, 2):
+    for c_idx, val in enumerate(row, 1):
+        cell = ws11.cell(row=r_idx, column=c_idx, value=val)
+        cell.alignment = Alignment(vertical="top", wrap_text=True)
+        cell.border = BORDER
+        if r_idx % 2 == 0:
+            cell.fill = ALT_FILL
+widths11 = [16, 12, 50, 12, 32, 38, 38]
+for i, w in enumerate(widths11, 1):
+    ws11.column_dimensions[get_column_letter(i)].width = w
+ws11.row_dimensions[1].height = 30
+ws11.freeze_panes = "A2"
+
+
+# ---------- Sheet 12: DIY Werkzeuge ----------
+ws12 = wb.create_sheet("DIY 12 Werkzeuge")
+headers12 = ["Werkzeug", "Pflicht/Optional", "Kauf/Miete", "Preis EUR", "Bezugsquelle", "Bemerkung"]
+werkzeug = [
+    ["Tischkreissaege", "PFLICHT", "Miete empfohlen", 200,
+     "Bauhaus PT Mietservice", "Hochpraezise Latten-Schnitte. 25-40 EUR/Tag x 7 Tage."],
+    ["Stichsaege", "PFLICHT", "Kauf", 80, "Bauhaus / Leroy Merlin", "Fuer Tono-Korrekturen, Tuer-Ausschnitte. Festool/Bosch."],
+    ["Akkuschrauber 18V", "PFLICHT", "Kauf", 180, "Bauhaus", "2 Akkus empfohlen. Bosch GSR oder Makita."],
+    ["Bohrmaschine stationaer", "PFLICHT", "Miete oder Kauf", 150,
+     "Bauhaus Miete o. Globus Baumarkt Kauf", "Fuer 280 Latten-Bohrungen praezise. Saeulenbohrmaschine ideal."],
+    ["Bohrlehre selbstgebaut", "PFLICHT", "Eigenbau", 20, "Sperrholz-Rest",
+     "MUSS-HAVE: 5 mm Bohrloch, Anschlag fuer Wiederholgenauigkeit. Selbst in 1 Std gebaut."],
+    ["Bohraufsaetze M5+M6", "PFLICHT", "Kauf", 25, "Wuerth PT", "Edelstahl-tauglich, scharf."],
+    ["Akku-Hobel ELEKTRISCH", "PFLICHT", "Miete", 100, "Bauhaus PT", "Latten-Oberflaeche glatt machen. 2 Wochen Miete."],
+    ["Sortimentskasten Schrauben A4", "PFLICHT", "Kauf", 80, "Wuerth", "M5, M6, Spax 4x50, 5x80 Edelstahl A4."],
+    ["Schraubzwingen (Set 8 Stueck)", "PFLICHT", "Kauf", 60, "Bauhaus", "Beim Khaana-Zusammenbau unentbehrlich."],
+    ["Wasserwaage 2m", "PFLICHT", "Kauf", 35, "Bauhaus", "Plattform-Aufbau, Tuer-Justierung."],
+    ["Massband 5m + 8m", "PFLICHT", "Kauf", 25, "Bauhaus", "Doppelpack."],
+    ["Erdraketen-Werkzeug Krinner", "PFLICHT", "Miete", 80,
+     "Mit Schraubpfahl-Lieferung mitbestellen", "Spezial-Werkzeug fuer Krinner-Schrauben. 8 Pfaehle 1 Tag."],
+    ["Sicherheitsausruestung (Brille+Gehoer+Maske)", "PFLICHT", "Kauf", 60,
+     "Bauhaus", "Pflicht fuer Saege+Hobel+Plane-Naehen."],
+
+    ["Leiter 3 m", "Empfohlen", "Miete oder Kauf", 90,
+     "Bauhaus", "Tono-Aufbau (4,20 m hoch). Klappleiter ausreichend."],
+    ["4-8 Helfer fuer Aufbau", "Empfohlen", "Bekanntenkreis",
+     0, "-", "Tono+Uni-Aufbau allein nicht moeglich. Pizza & Bier statt Geld."],
+    ["Sattler-Werkzeug fuer Schlaufen", "Optional", "Kauf", 40,
+     "Sattlerei PT", "Falls Du Lederband statt Bolzen am Khaana willst."],
+    ["Industrie-Naehmaschine", "OPTIONAL (nur wenn selber naehen)", "Miete", 200,
+     "Sattlerei lokal", "Du wolltest Plane bei Fachbetrieb beauftragen -> nicht noetig."],
+    ["Tacker fuer Innenliner", "Empfohlen", "Kauf", 30, "Bauhaus", "Hand-Tacker mit 10 mm Klammern."],
+    ["Schraubendreher-Set", "Empfohlen", "Kauf", 25, "Bauhaus", "Wera/Wiha Premium - lebenslange Investition."],
+    ["Beize/Imprägnierung Holz (Hartoel)", "Empfohlen", "Kauf", 80,
+     "Bauhaus Auro/Osmo", "Auro/Osmo Hartoel statt Lack - atmungsaktiv. ca. 4 Dosen fuer 8m."],
+]
+for col, h in enumerate(headers12, 1):
+    c = ws12.cell(row=1, column=col, value=h)
+    c.fill = HEADER_FILL
+    c.font = HEADER_FONT
+    c.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+    c.border = BORDER
+for r_idx, row in enumerate(werkzeug, 2):
+    for c_idx, val in enumerate(row, 1):
+        cell = ws12.cell(row=r_idx, column=c_idx, value=val)
+        cell.alignment = Alignment(vertical="top", wrap_text=True)
+        cell.border = BORDER
+        if r_idx % 2 == 0:
+            cell.fill = ALT_FILL
+
+# Summe
+total_tool = sum(r[3] for r in werkzeug)
+sum_row = len(werkzeug) + 2
+ws12.cell(row=sum_row, column=3, value="WERKZEUG GESAMT").font = Font(bold=True)
+ws12.cell(row=sum_row, column=4, value=total_tool).font = Font(bold=True, size=12, color="2E5C8A")
+for col in range(1, 7):
+    ws12.cell(row=sum_row, column=col).border = BORDER
+
+widths12 = [38, 22, 18, 12, 38, 50]
+for i, w in enumerate(widths12, 1):
+    ws12.column_dimensions[get_column_letter(i)].width = w
+ws12.row_dimensions[1].height = 30
+ws12.freeze_panes = "A2"
+
+
+# ---------- Sheet 13: DIY Kostenrechnung ----------
+ws13 = wb.create_sheet("DIY 13 Kostenrechnung")
+ws13.column_dimensions["A"].width = 36
+ws13.column_dimensions["B"].width = 16
+ws13.column_dimensions["C"].width = 60
+
+t = ws13.cell(row=1, column=1, value="DIY 8m Jurte - Vollkostenrechnung + Vergleich Casa dos Sonhos")
+t.font = TITLE_FONT
+ws13.merge_cells("A1:C1")
+
+kosten = [
+    ("Block A: Material (siehe Sheet 9)", "", ""),
+    ("Khaana Edelkastanie + Bolzen", 1455, "PT-Saegerei. Hauptbauteil Wand."),
+    ("Tono fertig + Versand", 1000, "Hartholz-Kronenring + Spedition aus DE/HU."),
+    ("Uni Sibir. Laerche + Befestigung", 982, "60 Dachstangen incl. Niete + Lederschlaufen."),
+    ("Kuriye Spannband + Spannschloesser", 192, "Wand-Zugring."),
+    ("Tuer + Tuerbeschlaege A4", 1350, "Robinie/Eiche, Doppeltuer mit Doppelverglasung."),
+    ("Plattform komplett (Pfaehle, Tragwerk, Daemmung, Decke, Schrauben)", 4040,
+     "Schraubpfaehle Krinner + Kiefer KDI + Kork 30mm + Laerchen-Deck T+G."),
+    ("Daemmung Wand+Dach (Schafwollfilz Isolena 16mm)", 1680,
+     "105 m2 inkl. Aufschlag, Versand AT->PT."),
+    ("Innenliner Baumwolle", 780, "65 m2 Sergeant 200 g/m2."),
+    ("Solitex-Membran (Diffusionsoffen)", 690, "115 m2 fuer Algarve-Klima essentiell."),
+    ("Aussenplane Sauleda Massanfertigung", 3500,
+     "Komplett-Set Dach+Wand+Kuppel-Cover, Sauleda Solar Pro Acryl."),
+    ("Polycarbonat-Kuppel oeffenbar", 750, "1,2 m, klar, oeffnungs-faehig."),
+    ("Sturm-Kit (Erdanker + Ratschen)", 456, "ALGARVE OBLIGATORISCH."),
+    ("Kaminzug-Durchfuehrung", 280, "Falls Holzofen geplant."),
+    ("Schattennetz Algarve", 240, "Verlaengert Plane-Lebensdauer drastisch."),
+    ("Reserve (10%)", 1500, "Schraubenkauf, Lieferzuschlaege, Reparaturen."),
+    ("Werkzeug (Miete+Kauf, siehe Sheet 12)", 1378, "Tischkreissaege Miete + Akku-Tools Kauf."),
+    ("", "", ""),
+    ("ZWISCHENSUMME MATERIAL+WERKZEUG", 20273, "Komplett-Materialliste + Werkzeug-Pauschale."),
+    ("", "", ""),
+
+    ("Block B: Versand + Transport", "", ""),
+    ("Holz-Versand DE/AT->PT (Laerche, Robinie)", 600, "Spedition Sammelladung 2-3 Wochen."),
+    ("Filz-Versand AT->PT (Isolena)", 250, "Paketdienst, ~100 kg."),
+    ("Schraubpfaehle/Schrauben Inland PT", 0, "Lokaler Einkauf."),
+    ("Plane-Lieferung", 150, "Falls Auftrag bei ES-Sattler statt PT."),
+    ("Tono-Versand", 250, "Sperrgut DE/HU->PT."),
+    ("", "", ""),
+    ("ZWISCHENSUMME VERSAND", 1250, ""),
+    ("", "", ""),
+
+    ("Block C: Eigene Arbeitszeit (nicht monetarisiert)", "", ""),
+    ("Geschaetzter Zeitaufwand", "350-450 Std", "Bei mittlerem Skill, einzeln + 4-8 Helfer-Tage."),
+    ("Zeit-Aequivalent bei 30 EUR/h (rechnerisch)", "10.500-13.500 EUR", "Bewertung: Hobby/Eigenleistung. Nicht in Kostenrechnung."),
+    ("", "", ""),
+
+    ("GESAMTKOSTEN DIY (Material+Werkzeug+Versand)", 21523,
+     "Inklusive Werkzeug und Algarve-Sturm-Kit. OHNE eigene Arbeitszeit."),
+
+    ("", "", ""),
+    ("Vergleich mit Casa dos Sonhos (Hersteller)", "", ""),
+    ("Casa dos Sonhos 7,3m (42 m2)", 15750, "Lieferung+Aufbau PT INKL. Aber: keine Plattform, kein Sturm-Kit, kein Kaminzug."),
+    ("Casa Plattform separat", 4000, "Wenn man dasselbe Niveau will (Schraubpfaehle + Kork + Laerchen-Deck)."),
+    ("Casa Sturm-Kit (Optionspreis offen)", 800, "Geschaetzt - bei Casa konkret abfragen."),
+    ("Casa Kaminzug (Optionspreis offen)", 600, "Geschaetzt - bei Casa konkret abfragen."),
+    ("Casa Schattennetz", 240, "Selbst lokal kaufen."),
+    ("CASA TOTAL APPLES-TO-APPLES (7,3m)", 21390,
+     "Ueberraschung: DIY 8m und Casa 7,3m kommen aufs Gleiche raus!"),
+
+    ("", "", ""),
+    ("Casa 9,1m (64 m2)", 18000, "Inkl. Aufbau, ohne Plattform/Sturm-Kit/Kamin."),
+    ("Casa 9,1m + Plattform + Sturm-Kit + Kamin", 23640, "Komplett-Setup 9,1m vs DIY 8m."),
+
+    ("", "", ""),
+
+    ("FAZIT ENTSCHEIDUNG DIY VS CASA", "", ""),
+    ("Material-Differenz DIY 8m vs Casa 7,3m all-in", "-130 EUR (Casa minimal teurer)",
+     "DIY ist NICHT signifikant guenstiger wenn alles ehrlich gerechnet wird."),
+    ("Was DIY trotzdem fuer dich bringen kann", "Lernen + 50m2 statt 42m2 + 8m statt 7,3m + volle Kontrolle Materialwahl + keine 100% Vorauszahlung",
+     "Du baust 8m statt 7,3m = 8 m2 mehr Wohnflaeche fuer denselben Preis."),
+    ("Was DIY KOSTET (jenseits Geld)", "350-450 Stunden Lebenszeit + Risiko Konstruktionsfehler + Werkzeug-Lernkurve",
+     "Casa liefert Sicherheit (10-J. UV-Garantie schriftlich)."),
+    ("Empfehlung", "Hybrid pruefen: Casa Plane+Daemmung kaufen, Plattform+Aufbau selbst",
+     "Frage Casa, ob sie Komponenten ohne Aufbau verkaufen. Spart 30-50% Hersteller-Marge."),
+]
+
+row = 2
+for entry in kosten:
+    a, b, c = entry
+    if a and (b == "" and c == ""):
+        cell = ws13.cell(row=row, column=1, value=a)
+        cell.font = Font(bold=True, size=12, color="2E5C8A")
+        ws13.merge_cells(start_row=row, start_column=1, end_row=row, end_column=3)
+        ws13.row_dimensions[row].height = 22
+    elif not a and b == "" and c == "":
+        ws13.row_dimensions[row].height = 8
+    else:
+        c1 = ws13.cell(row=row, column=1, value=a)
+        c1.alignment = Alignment(wrap_text=True, vertical="top")
+        c1.border = BORDER
+        c2 = ws13.cell(row=row, column=2, value=b)
+        c2.alignment = Alignment(horizontal="right", vertical="top")
+        c2.border = BORDER
+        if isinstance(b, (int, float)):
+            c2.number_format = '#,##0 "EUR"'
+            if a.startswith("GESAMT") or a.startswith("ZWISCHENSUMME") or a.startswith("CASA TOTAL"):
+                c1.font = Font(bold=True)
+                c2.font = Font(bold=True, size=12, color="2E5C8A")
+        c3 = ws13.cell(row=row, column=3, value=c)
+        c3.alignment = Alignment(wrap_text=True, vertical="top")
+        c3.border = BORDER
+        ws13.row_dimensions[row].height = max(20, min(45, 15 + len(str(c)) // 8))
+    row += 1
+ws13.freeze_panes = "A2"
+
+
 # Speichern
 output_path = "/home/user/Jurte/Jurten_Recherche_Algarve.xlsx"
 wb.save(output_path)
