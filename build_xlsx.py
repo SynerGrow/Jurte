@@ -195,12 +195,13 @@ rows1 = [
     ["Casa dos Sonhos Yurts (Alto Alentejo, Besteiros de Cima/Portalegre)",
      "Portugal (Alto Alentejo)",
      "https://www.casadossonhos.co.uk/copy-of-environmental-policy",
-     "5m=20m2 / 6,1m=30m2 / 7,3m=42m2 / 9,1m=64m2", "Anfrage",
+     "5m=20m2 / 6,1m=30m2 / 7,3m=42m2 / 9,1m=64m2",
+     "5m 7.900 / 6,1m 9.700 / 7,3m 15.750 / 9,1m 18.000 (delivered+erected PT)",
      "Portugiesisches Holz (Tueren, Khana-Gitter, Sparren, Fenster), portugiesische Korkboeden + Korkdaemmung, moderne Isolierung, Aussenhuelle mit 10-J. UV-Garantie",
-     "EXZELLENT - 10 Jahre UV-Garantie auf Aussenhuelle, Plane rottet/schimmelt nicht, braucht keine Nachbehandlung; speziell fuer portugiesisches Wetter gefertigt",
-     "Innerhalb Festland-PT inkl. Lieferung & Aufbau (im Preis enthalten)",
-     "STANDARD inkl.: 1x1 m doppelverglastes Alu-Fenster (9,1m: 120x120cm), Holztuer mit Fenster+Laden, Daemmung, oeffenbares Kuppel-Oberlicht. Selbsttragend ohne Mittelsaeule, Wand >2 m, Mittelring min. 3,5 m. Solarwerkstatt. OPTIONEN: groessere Fenster, Sturm-Kit, Extra-Daemmlagen, franz. Doppeltueren 3/4-Glas+Lade, Kaminzug, Mueckennetze",
-     "8.000-15.000 (geschaetzt nach Groesse) - Lieferung+Aufbau PT inklusive"],
+     "EXZELLENT - 10 Jahre UV-Garantie auf Aussenhuelle SCHRIFTLICH, Plane rottet/schimmelt nicht, braucht keine Nachbehandlung; speziell fuer portugiesisches Wetter gefertigt",
+     "Innerhalb Festland-PT INKL. Lieferung+Aufbau im Preis",
+     "STANDARD inkl.: 1x1 m doppelverglastes Alu-Fenster (9,1m: 120x120cm) ODER Vollglas-UPVC-Tuer, Standardtuer mit Fenster+Holzladen, moderne Daemmung, Innenliner, oeffenbares Kuppel-Oberlicht. Selbsttragend ohne Mittelsaeule, Wand >2 m, Mittelring min. 3,5 m. Solarwerkstatt. OPTIONEN (Preis offen): groessere/Vollhoehe-Fenster, STURM-KIT (storm-prone areas), Extra-Daemmlagen, franz. Doppeltueren 3/4-Glas+Lade, Vollhoehe-UPVC-Doppeltueren, Kaminzug, MEZZANINE-Ebenen",
+     "5m: 7.900 / 6,1m: 9.700 / 7,3m: 15.750 / 9,1m: 18.000 EUR alles inkl. PT-Lieferung+Aufbau"],
 
     ["Yurt Workshop Spain (Cadiar)", "Spanien (Granada)", "http://yurtworkshop.es/",
      "5-9m", "Anfrage",
@@ -521,9 +522,9 @@ for i, w in enumerate(widths3, 1):
 ws4 = wb.create_sheet("Top 5 Empfehlungen")
 headers4 = ["Rang", "Anbieter", "Typ", "Preis EUR", "Warum empfohlen", "Link"]
 rows4 = [
-    [1, "Casa dos Sonhos Yurts (Alto Alentejo)", "Hersteller PT - lokale Spitzenoption",
-     "ca. 8.000-15.000 nach Groesse (Lieferung+Aufbau PT inkl.)",
-     "BESTE KLIMA-EIGNUNG IM MARKT: 10 Jahre UV-Garantie auf Aussenhuelle, Plane rottet/schimmelt nicht, keine Nachbehandlung noetig. Standorte: 5m/6,1m/7,3m/9,1m (20/30/42/64 m2). SELBSTTRAGEND ohne Mittelsaeule, Waende >2 m, Mittelring 3,5 m -> super geraeumig. STANDARD inkl.: doppelverglastes Alu-Fenster, Holztuer m. Fenster+Laden, Daemmung, oeffenbares Kuppel-Oberlicht. Portugiesisches Holz + portug. Korkboeden + Korkdaemmung. Solarwerkstatt in Alto Alentejo (Portalegre). Lieferung und Aufbau in Festland-PT IM PREIS. Kein Import-Zoll/IVA. Optionen: Sturm-Kit (Algarve-Winterstuerme!), Extra-Daemmung, franz. Doppeltueren, Kaminzug, Mueckennetze.",
+    [1, "Casa dos Sonhos Yurts (Alto Alentejo)", "Hersteller PT - lokale Spitzenoption (BESTAETIGTE PREISE)",
+     "5m 7.900 / 6,1m 9.700 / 7,3m 15.750 / 9,1m 18.000 EUR delivered+erected",
+     "BESTPREIS FUER KLEINE+MITTLERE GROESSEN MIT KLIMA-GARANTIE: 6,1m bei 9.700 EUR all-in (Lieferung+Aufbau PT inkl.) ist im Algarve-Markt kaum zu unterbieten. 10 Jahre UV-Garantie SCHRIFTLICH auf Aussenhuelle, kein Verrotten/Schimmel, keine Nachbehandlung noetig. SELBSTTRAGEND ohne Mittelsaeule, Waende >2 m, Mittelring 3,5 m -> super geraeumig. STANDARD inkl.: doppelverglastes Alu-Fenster oder Vollglas-UPVC-Tuer, Standardtuer mit Fenster+Laden, moderne Daemmung, Innenliner, oeffenbares Kuppel-Oberlicht, klima-angepasste Aussenhuelle. Portugiesisches Holz, Solarwerkstatt in Alto Alentejo (Portalegre). KEIN Import-Zoll/IVA, kein Versandstress. Optionen verfuegbar: Sturm-Kit (Algarve!), Vollhoehe-Fenster, Extra-Daemmung, franz. Doppeltueren, Kaminzug, MEZZANINE-Ebenen. HINWEIS 7,3m und 9,1m: Preis-Sprung ueberproportional - 6,1m bietet bestes EUR/m2.",
      "https://www.casadossonhos.co.uk/copy-of-environmental-policy  |  https://www.facebook.com/yurtscasadossonhos/"],
 
     [2, "Bet Yurts", "Hersteller PT (Algarve direkt)",
@@ -748,15 +749,18 @@ cds_data = [
     ("Empfehlung Algarve", "Mit Sturm-Kit + Mueckennetz + ggf. Extra-Daemmung -> ideal fuer Algarve"),
 
     ("", ""),
-    ("Preis & Kommerzielles", ""),
-    ("Preisliste", "Nicht oeffentlich. Anfrage per E-Mail / Facebook erforderlich."),
-    ("Schaetzung 5m (20 m2)", "ca. 8.000-10.500 EUR inkl. Aufbau (vergleichbar mit Yourtepoque-Niveau + Local-Bonus)"),
-    ("Schaetzung 6,1m (30 m2)", "ca. 9.500-12.500 EUR inkl. Aufbau"),
-    ("Schaetzung 7,3m (42 m2)", "ca. 11.500-14.500 EUR inkl. Aufbau (an Budget-Grenze)"),
-    ("Schaetzung 9,1m (64 m2)", "ca. 15.000-20.000+ EUR (ueber Budget)"),
-    ("Lieferung & Aufbau", "Inklusive in Festland-PT"),
+    ("Preis & Kommerzielles (BESTAETIGT per Mail an Sebastian Mai 2026)", ""),
+    ("Preisliste", "Direktangebot per Facebook-Messenger erhalten - oeffentlich nicht gelistet"),
+    ("5m (20 m2)", "7.900 EUR delivered + erected mainland PT"),
+    ("6,1m / 20-foot (30 m2)", "9.700 EUR delivered + erected mainland PT - BESTES EUR/m2-VERHAELTNIS"),
+    ("7,3m / 24-foot (42 m2)", "15.750 EUR delivered + erected mainland PT"),
+    ("9,1m / 30-foot (64 m2)", "18.000 EUR delivered + erected (inkl. 120x120cm Alu-Fenster fuer Proportionalitaet)"),
+    ("EUR pro m2 Vergleich", "5m: 395 / 6,1m: 323 / 7,3m: 375 / 9,1m: 281 - 6,1m und 9,1m am effizientesten"),
+    ("Lieferung & Aufbau", "IM PREIS ENTHALTEN (Festland-PT) - keine versteckten Versandkosten"),
     ("Import-Zoll/IVA", "ENTFAELLT (lokale PT-Produktion)"),
-    ("Zahlung", "Direkt mit Hersteller, vermutlich Anzahlung + Restzahlung bei Abnahme"),
+    ("Optionen Preise", "Noch nicht bestaetigt - aktiv nachfragen: Sturm-Kit, franz. Doppeltueren, Extra-Daemmung, Kaminzug, Mezzanine"),
+    ("Slot-Verfuegbarkeit (Mai 2026)", "Atilla Berki-Style Slot-System: aktuell Dezember 2026 oder 2027 angeboten -> hohe Auslastung"),
+    ("Zahlung", "Direkt mit Hersteller, Konditionen offen (Etappenzahlung gegen Baufortschritt anfragen)"),
 
     ("", ""),
     ("Nachhaltigkeit / ESG", ""),
@@ -775,8 +779,9 @@ cds_data = [
 
     ("", ""),
     ("Fazit fuer Algarve", ""),
-    ("Bewertung", "TOP-EMPFEHLUNG #1 - einzigartige 10-J. UV-Garantie, lokale Produktion, Lieferung+Aufbau inkl., portugiesische Materialien, kein Import-Risiko."),
-    ("Naechster Schritt", "Per Facebook Messenger / E-Mail Angebot fuer 5m oder 6,1m anfragen, mit Sturm-Kit, Mueckennetz, Kaminzug, ggf. franz. Doppeltueren."),
+    ("Bewertung", "TOP-EMPFEHLUNG #1 BESTAETIGT - bei 6,1m fuer 9.700 EUR all-in nicht zu schlagen, einzigartige 10-J. UV-Garantie schriftlich, lokale Produktion, Lieferung+Aufbau inkl., portugiesische Materialien, kein Import-Risiko, kein Versandstress."),
+    ("Sweet Spot", "6,1m / 30 m2 zu 9.700 EUR - DEUTLICH UNTER 15k Budget, laesst Raum fuer Sturm-Kit + Kaminzug + Plattform-Vorbereitung"),
+    ("Naechster Schritt", "Konkretes schriftliches Angebot fuer 6,1m oder 7,3m inkl. Sturm-Kit + Kaminzug + Mezzanine-Option (falls fuer 7,3m relevant) anfragen. Zahlungskonditionen klaeren (Etappenzahlung). Show-Yurt-Besuch Portalegre verhandeln. Slot 2026 bestaetigen (nicht 2027)."),
 ]
 
 row = 2
