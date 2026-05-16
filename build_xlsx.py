@@ -1800,6 +1800,141 @@ for entry in kosten:
 ws13.freeze_panes = "A2"
 
 
+# ---------- Sheet 14: 8m DIY-Modify Vollkalkulation (Sebastian Mai 2026) ----------
+ws14 = wb.create_sheet("DIY 14 8m Modify Kalk")
+ws14.column_dimensions["A"].width = 38
+ws14.column_dimensions["B"].width = 16
+ws14.column_dimensions["C"].width = 62
+
+t = ws14.cell(row=1, column=1, value="DIY 8m Yurt fuer Algarve - 'Modify Cheap Base' mit Algarve-Sattler (Sebastians Praeferenz Mai 2026)")
+t.font = TITLE_FONT
+ws14.merge_cells("A1:C1")
+ws14.row_dimensions[1].height = 30
+
+kalk_8m = [
+    ("AUSGANGSLAGE", "", ""),
+    ("Sebastians Vorgabe", "8 m Durchmesser (50 m2)", "Begrundung: deutlich groesser als Casa 7,3m (42m2). Wohnflaeche-Plus = 8 m2 (ca. ein Mini-Schlafalkoven)."),
+    ("Verfuegbare 8m-Anbieter", "Yourtepoque, Atilla, Adorjan, jurte24, YourTent CZ, Yurts4ever, DIY", "Casa und Bēt Yurts haben KEIN 8m im Sortiment. Casa naechste: 7,3m oder 9,1m."),
+    ("Budget-Realitaet", "8m all-in ca. 17.000-22.000 EUR", "Original Budget 15.000 EUR reicht NICHT fuer 8m. Bei 8m muss Budget auf 17-18k flexen ODER signifikante Kompromisse."),
+
+    ("", "", ""),
+    ("KONZEPT DIY-MODIFY 8M", "", ""),
+    ("Idee", "Cheap Frame (HU) + Premium Plane (Sauleda lokal Algarve) + Selbst-Aufbau", "Wiederholt das 6m-Schema von Sheet 13, hochskaliert auf 8m. Hauptvorteile: lokaler Algarve-Sattler fuer Reparatur, volle Materialkontrolle, sofortige Verfuegbarkeit, kein Slot-Warten."),
+    ("Anbieter Frame", "Adorjan Jurta HU / Atilla HU / Yurts4ever RO", "Anfragen parallel. Adorjan + Atilla aktuell mit Frame-only-Anfrage angeschrieben Mai 2026."),
+    ("Anbieter Plane", "Dune Algarve Sailmakers (Vilamoura) / Toldos Etapaveloz (Loule) / Textilux", "3 Anfragen Mai 2026 abgesendet. Erwartung: 1-3 Wochen Antwortzeit."),
+
+    ("", "", ""),
+    ("MATERIAL-KOSTEN 8M", "", ""),
+    ("Adorjan 8m Frame-only (Khaana + Tono + Uni + Tuer)", "5.000",
+     "SCHAETZUNG (6m bei 1.750 - 8m Skalierung mit Material-Mehrbedarf + groesserem Tono). Konkreter Preis ueber laufende Anfrage."),
+    ("Versand HU -> Algarve 8m (heavier)", "2.000",
+     "Spedition Uebergross, 2-3 Wochen. 8m benoetigt groesseres Fahrzeug als 6m."),
+    ("Sauleda Solar Pro Plane 8m (~150 m2 Stoff)", "4.500",
+     "DIE GROESSTE POSITION: 8m hat ca. 60 m2 Dach (Kegelmantel) + 50 m2 Wand + Verschnitt + Saum-/Tunnel-Verstaerkung = ca. 150 m2 Stoffbedarf. Bei 25-30 EUR/m2 + 50-100% Verarbeitungs-Aufschlag = 4.000-5.000 EUR komplett massgefertigt. Komplettes Set: Dach + Wand + Kuppel-Cap."),
+    ("PET-Vlies-Daemmung 8 cm (~110 m2 Wand+Dach)", "900",
+     "Tobias Tumfart AT 8,16 EUR/m2 netto = 898 EUR fuer 110 m2. Modern, schimmelfest fuer Salzluft."),
+    ("Solitex Diffusions-Membran", "700",
+     "Pro Clima AT. ~120 m2 inkl. Ueberlappung. Verhindert Kondensat in Daemmwolle."),
+    ("Innenliner Baumwolle (~115 m2 Stoff)", "1.380",
+     "200 g/m2 Sergeant fuer Aesthetik + Daemmwolle-Halt. Beim selben Sattler/Sattlerei mitbeauftragen oder online beziehen."),
+    ("Kuppel-Oberlicht oeffenbar (Polycarbonat)", "800",
+     "1,2-1,4 m Durchmesser bei 8m-Jurte (skaliert mit Tono). Bei Tono-Lieferant gleich mitbestellen."),
+    ("Tuer-Upgrade (Glas-Doppeltuer / franz. Doppeltuer)", "600",
+     "Adorjan-Standard-Tuer kann zu einfach sein - Upgrade pruefen. Oder lokal bei PT-Schreiner massgefertigt."),
+
+    ("", "", ""),
+    ("PLATTFORM 8M", "", ""),
+    ("Plattform-Konstruktion (~50 m2)", "4.500",
+     "10 Schraubpfaehle Krinner KSF-M 800mm = 350 EUR. Kiefer KDI Tragbalken 50x200 ca. 25 Stueck = 700 EUR. Laerchen-Deck T+G 27 mm fuer 50 m2 = 1.900 EUR. Kork-Daemmung 30mm 50 m2 = 900 EUR. Geo-Vlies + Schrauben + Sundries = 650 EUR."),
+    ("Vereinfachte Plattform (Budget-Variante)", "3.000",
+     "Falls Budget eng: Kork weglassen, Standard-Druck-impr. Decking statt Laerche. Spart 1.500 EUR."),
+
+    ("", "", ""),
+    ("STURM + KLIMA", "", ""),
+    ("Sturm-Kit (Erdanker + Ratschen 5T)", "500",
+     "ALGARVE-OBLIGATORISCH. 10 Anker statt 8 fuer 8m. Verstaerkter Spannband + Ratschen-Set."),
+    ("Schattennetz Algarve (~75 m2)", "350",
+     "Lokale Agrar-Kooperative. 8m braucht mehr Flaeche als 6m."),
+
+    ("", "", ""),
+    ("BUFFER", "", ""),
+    ("Reserve / Verschnitt / Schrauben", "800",
+     "Bei 8m mehr Kleinteile, hoeheres Risiko von Anpassungen."),
+
+    ("", "", ""),
+    ("GESAMTKOSTEN DIY-MODIFY 8M (mit Premium-Plattform)", "22.030",
+     "INKL. Werkzeug-Pauschale 1.378 EUR (siehe Sheet DIY 12). Bei eigenem Werkzeug-Bestand: -1.378 = 20.652 EUR."),
+    ("GESAMTKOSTEN DIY-MODIFY 8M (Budget-Plattform, eigenes Werkzeug)", "17.652",
+     "Mit der einfacheren Plattform-Variante und ohne neue Werkzeug-Kosten. UEBER 15k Budget aber UNTER 20k."),
+
+    ("", "", ""),
+    ("VERGLEICH 8M-OPTIONEN ALL-IN ALGARVE", "", ""),
+    ("Yourtepoque 8m (FR) + Plattform + Sturm/Schatten", "19.170",
+     "Einfachste 8m-Komplett-Loesung. ABER keine UV-Garantie auf Plane, Versand 2k FR-PT."),
+    ("DIY-Modify 8m (Adorjan + Algarve-Sattler) Budget-Variante", "17.652",
+     "EMPFEHLUNG #1 FUER 8M. Schaerfster Preis bei premium Sauleda-Plane lokal. 350-450 h Eigenarbeit."),
+    ("DIY-Modify 8m Premium-Variante", "22.030",
+     "Mit Premium-Plattform inkl. Kork-Daemmung."),
+    ("Atilla 8m + Eichen-Upgrade + Plattform DIY", "21.960",
+     "Komplette Jurte mit Premium-Holz von Atilla, dann Plattform selbst. Versand 3.500 EUR ist der Kostentreiber."),
+    ("YourTent CZ 8m + Versand + Plattform", "21.350",
+     "5-J. Plane-Garantie ist Plus. Versand CZ-PT ca. 2k. Schaetzung."),
+    ("jurte24 8m winterfest + Versand + Plattform", "26.250",
+     "Teuerste 8m-Option. Kiefer-Rahmen (kritisch fuer Algarve), nur Werbe-Aussage statt schriftl. UV-Garantie."),
+
+    ("", "", ""),
+    ("ALTERNATIVE: SIZE-DOWN ZU 7,3M", "", ""),
+    ("Casa 7,3m + Plattform DIY + Sturm/Schatten + Kamin", "20.700",
+     "Casa hat keine 8m, aber 7,3m mit 10-J. UV-Garantie und Lieferung+Aufbau inkl. STATUS: Oktober 2026 Slot weg, fruehestens 2027 verfuegbar."),
+
+    ("", "", ""),
+    ("FAZIT 8M", "", ""),
+    ("8m unter 18k machbar?", "JA - aber nur DIY-Modify Budget-Variante",
+     "17.652 EUR sind realistic fuer DIY-Modify 8m mit Sauleda-Plane und einfacherer Plattform. Sebastian muss 2-3k ueber Original-Budget gehen."),
+    ("8m unter 20k machbar?", "JA - mehrere Wege",
+     "DIY-Modify Premium: 22k, DIY-Modify Budget: 17,6k, Yourtepoque: 19k. Bewegt sich im 17-22k-Korridor je nach Detailwahl."),
+    ("Empfohlene Strategie", "Adorjan + Atilla parallel anfragen (Mai 2026 gesendet), Sattler-Antworten abwarten, dann finalkalkulieren",
+     "Mit konkreten Adorjan-Frame-Preis und Sattler-Plane-Preis kann auf 500 EUR genau gerechnet werden. Aktuell noch Schaetzungen."),
+    ("Worst Case", "8m geht nicht in Budget - dann Casa 7,3m als 2027-Slot oder Casa 6,1m sofort",
+     "Falls Adorjan oder Sattler unverhaeltnismaessig teuer, ist 7,3m bei Casa der beste Kompromiss (Casa-Slot 2027 oder Paula Young gebraucht)."),
+]
+
+row = 2
+for entry in kalk_8m:
+    a, b, c = entry
+    if a and not b and not c:
+        cell = ws14.cell(row=row, column=1, value=a)
+        cell.font = Font(bold=True, size=12, color="2E5C8A")
+        ws14.merge_cells(start_row=row, start_column=1, end_row=row, end_column=3)
+        ws14.row_dimensions[row].height = 22
+    elif not a and not b and not c:
+        ws14.row_dimensions[row].height = 8
+    else:
+        c1 = ws14.cell(row=row, column=1, value=a)
+        c1.alignment = Alignment(wrap_text=True, vertical="top")
+        c1.border = BORDER
+        c2 = ws14.cell(row=row, column=2, value=b)
+        c2.alignment = Alignment(horizontal="right", vertical="top")
+        c2.border = BORDER
+        if isinstance(b, str) and b.replace(".", "").replace(",", "").isdigit():
+            try:
+                c2.value = int(b.replace(".", ""))
+                c2.number_format = '#,##0 "EUR"'
+            except ValueError:
+                pass
+        if isinstance(b, (int, float)):
+            c2.number_format = '#,##0 "EUR"'
+        if isinstance(a, str) and (a.startswith("GESAMT") or a.startswith("VERGLEICH") or a.startswith("FAZIT") or a.startswith("BUDGET")):
+            c1.font = Font(bold=True)
+            c2.font = Font(bold=True, size=12, color="2E5C8A")
+        c3 = ws14.cell(row=row, column=3, value=c)
+        c3.alignment = Alignment(wrap_text=True, vertical="top")
+        c3.border = BORDER
+        ws14.row_dimensions[row].height = max(20, min(50, 15 + len(str(c)) // 8))
+    row += 1
+ws14.freeze_panes = "A2"
+
+
 # Speichern
 output_path = "/home/user/Jurte/Jurten_Recherche_Algarve.xlsx"
 wb.save(output_path)
