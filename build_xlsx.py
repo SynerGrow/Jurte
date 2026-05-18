@@ -1343,15 +1343,15 @@ quellen = [
      "Bootssegel + Marine-Persenningen + Schatten-Segel; Sauleda-Marine-Acryl",
      "https://www.dunesailmakers.com/en/",
      "Innerhalb PT (Algarve direkt)",
-     "PRIORITAET #1 FUER JURTEN-COVER-COMMISSION. Beste fachliche Eignung (3D-Persenning-Erfahrung, Sauleda im Sortiment). Persoenlicher Besuch leicht moeglich von Aljezur."],
+     "STATUS Mai 2026: ANFRAGE GESENDET (PT). Antwort offen. PRIORITAET #1 FUER JURTEN-COVER-COMMISSION. Beste fachliche Eignung (3D-Persenning-Erfahrung, Sauleda im Sortiment). Persoenlicher Besuch leicht moeglich von Aljezur."],
     ["Plane-Algarve-LOKAL", "Toldos Etapaveloz Lda", "PT (Loule, seit 2007)",
      "Toldos, Markisen, Sicht-/Schutz-beschattungen Spezialfertigung",
      "https://www.toldosetapaveloz.com/en", "Innerhalb PT (naehe Aljezur)",
-     "BACKUP #1: Aelteste Loule-Werkstatt, geographisch am naechsten. Toldos = Acryl-Markisen-Erfahrung = Sauleda-Verarbeitung. Frage: Erfahrung mit 3D-/Jurten-Form?"],
+     "STATUS Mai 2026: ANFRAGE GESENDET (PT). Antwort offen. Aelteste Loule-Werkstatt, geographisch am naechsten zu Aljezur. Toldos = Acryl-Markisen-Erfahrung = Sauleda-Verarbeitung. Frage: Erfahrung mit 3D-/Jurten-Form?"],
     ["Plane-Algarve-LOKAL", "Textilux", "PT (Algarve)",
      "Markisen + Stoff-Sonderanfertigung Veranden/Terrassen",
      "https://www.textilux.com/en/", "Innerhalb PT",
-     "BACKUP #2: spezialisiert auf grossflaechige Verarbeitung. Sauleda-kompatibel."],
+     "STATUS Mai 2026: ABGELEHNT - 'nao sao da nossa especialidade'. Klassischer Markisen-Hersteller, 3D-Persenning nicht im Programm. Datenpunkt: Toldos-Hersteller machen meist KEINE Jurten-Cover. Echte Kandidaten = Segelmacher (Dune) oder Atilla/Yurt Workshop als Cover-Only."],
     ["Plane-Algarve-LOKAL", "Toldos Chique", "PT (Algarve)",
      "Pergolas, Markisen, Outdoor-Beschattungs-Loesungen massgefertigt",
      "https://toldos-chique.com/awnings/", "Innerhalb PT",
@@ -1933,6 +1933,106 @@ for entry in kalk_8m:
         ws14.row_dimensions[row].height = max(20, min(50, 15 + len(str(c)) // 8))
     row += 1
 ws14.freeze_panes = "A2"
+
+
+# ---------- Sheet 15: Kommunikations-Log (Status aller laufenden Anfragen) ----------
+ws15 = wb.create_sheet("15 Kommunikations-Log")
+headers15 = ["Datum", "Anbieter", "Kanal", "Richtung", "Inhalt", "Status", "Naechste Aktion"]
+log = [
+    # === Frame-Anbieter ===
+    ["~10.05.2026", "Atilla es a Fehernep (HU)", "E-Mail",
+     "Sebastian -> Atilla", "Originale Anfrage 8m Komplett-Jurte",
+     "✓ Beantwortet", "Folgemail Frame-only-Anfrage senden (Entwurf liegt vor)"],
+    ["~10.05.2026", "Adorjan Jurta (HU)", "E-Mail",
+     "Sebastian -> Adorjan", "Frame-only Anfrage 8m, Larch optional, Oel-Finish, Versand PT",
+     "✓ Teilantwort", "Folgemail: 4 Punkte offen (Larch / Tuer-Variante / Lieferzeit / Eigener Spediteur / Werkstatt-Besuch)"],
+    ["?", "Adorjan Jurta (HU)", "E-Mail", "Adorjan -> Sebastian",
+     "8m Rahmen 3.220.000 HUF = 8.150 EUR netto. Spezifikation Top: 48 Rafters 5x10cm, Tono 170cm 4-lagig verleimt, Wand 2m, Pinie AT Biopin-impraegniert, isolierte Tuer Standard. Versand offen.",
+     "Info erhalten", "Folge-Fragen senden"],
+    ["?", "Adorjan Jurta (HU)", "E-Mail", "Adorjan -> Sebastian",
+     "Versand-Spediteur wird gesucht, kein Preis. 50% Anzahlung + 50% vor Versand. Installation extra (4 Pers + Fluege + Maschinen).",
+     "Info erhalten", "Folge-Fragen (Larch/Tuer/Lieferzeit) + Eigener-Spediteur-Option erfragen"],
+    ["~10.05.2026", "Yourtetoiles & Kontempobois (FR)", "E-Mail",
+     "Sebastian -> Yourtetoiles", "Anfrage 8m Yurte",
+     "✓ Teilantwort", "WhatsApp-Videocall Termin festlegen, beide Linien (Klassisch + Kontempo) erfragen"],
+    ["?", "Yourtetoiles & Kontempobois (FR)", "E-Mail",
+     "Yourtetoiles -> Sebastian",
+     "Empfehlen Kontempo (Holz-Rundhaus mit Zink-Dach) statt klassischer Jurte fuer Atlantik-Exposition. Devis komplett dauert noch. Bieten Visio-Call an.",
+     "Info erhalten", "Visio-Call vereinbaren (3 Terminvorschlaege schicken)"],
+
+    # === PT-Hersteller ===
+    ["~12.05.2026", "Casa dos Sonhos (Sarah & Vladimir, PT)", "Facebook Messenger",
+     "Sebastian -> Sarah", "Anfrage 5/6,1/7,3/9,1m Preise + Konditionen",
+     "✓ Beantwortet", "-"],
+    ["~13.05.2026", "Casa dos Sonhos (Sarah & Vladimir, PT)", "Facebook Messenger",
+     "Sarah -> Sebastian",
+     "Preise bestaetigt: 5m 7.900 / 6,1m 9.700 / 7,3m 15.750 / 9,1m 18.000 EUR delivered+erected PT. Refs Brett (Quinta Glamping) + Paula Young (verkauft 7,3m gebraucht).",
+     "Quote erhalten", "Nachfrage NIPC/IVA/Bankdaten/Material-Spec/Vermittlung Paula"],
+    ["15.05.2026", "Casa dos Sonhos (Sarah & Vladimir, PT)", "PDF Quote",
+     "Sarah -> Sebastian",
+     "Quote 6,1m + 2.Tuer 850 + Flue-Kit 100 = 10.650 EUR. 1.000 EUR Anzahlung + 9.650 EUR am 1.8.2026. Lieferung 2. Oktoberwoche 2026.",
+     "Quote erhalten", "Quote schwach dokumentiert (kein IVA-Split, kein Quote-Nr, keine Bank), Klaerung gefordert"],
+    ["15.05.2026", "Casa dos Sonhos (Sarah, PT)", "Facebook Messenger",
+     "Sarah -> Sebastian",
+     "SLOT OKTOBER 2026 ist an anderen Kunden vergeben. Naechster Slot 2027.",
+     "✗ Slot verloren", "Antwort raus: 2027er Slot + Preis-Bestaetigung + Paula-Vermittlung erfragen"],
+
+    ["~10.05.2026", "Bēt Yurts (Noga & Nadav, PT)", "E-Mail",
+     "Sebastian -> Noga", "Anfrage 6/7/9m Preise + Plattform + Aufbau Algarve",
+     "✓ Beantwortet", "-"],
+    ["~12.05.2026", "Bēt Yurts (Noga, PT)", "E-Mail + 3 PDF-Quotes",
+     "Noga -> Sebastian",
+     "Preise: 6m=12.600 / 7m=14.400 / 9m=19.800 Jurte netto. Plattform separat: 6m=6.500 / 7m=7.200 / 9m=11.500. Transport+Install: 700/1.900, 900/2.500, 1.500/2.900. 23% IVA on top. 50% upfront NICHT-RUECKZAHLBAR. AUGUST 2026 Slot. Material laut Quote: Nordic Pine + Outer Canvas + 80mm Insulation (ohne Marken-Angabe). 2-J. Garantie auf Plane.",
+     "Quote erhalten", "Mail raus: Konkurrenz-Preis + Material-Aufschluesselung (Sauleda? PET?) anfordern"],
+
+    # === Algarve-Sattler (DIY-Modify) ===
+    ["~17.05.2026", "Dune Algarve Sailmakers (PT)", "Web/E-Mail",
+     "Sebastian -> Dune", "Anfrage Sauleda-Plane 8m Massanfertigung",
+     "⏳ Antwort offen", "5 Tage warten, dann WhatsApp/Tel.-Nachfrage. Telefon-Skript bereit."],
+    ["~17.05.2026", "Toldos Etapaveloz (Loule, PT)", "Web/E-Mail",
+     "Sebastian -> Etapaveloz", "Anfrage Sauleda-Plane 8m Massanfertigung",
+     "⏳ Antwort offen", "5 Tage warten, dann Folgekontakt"],
+    ["~17.05.2026", "Textilux (Algarve, PT)", "Web/E-Mail",
+     "Sebastian -> Textilux", "Anfrage Sauleda-Plane 8m Massanfertigung",
+     "✗ ABGELEHNT", "'nao sao da nossa especialidade' - klassischer Markisen-Hersteller, kein 3D-Persenning. Keine weitere Aktion."],
+
+    # === Paula Young Lead ===
+    ["TBD", "Paula Young (FB 'Paula Vegan Chef')", "Facebook (offen)",
+     "Sebastian -> Paula", "Anfrage zur gebrauchten 7,3m Casa-Jurte",
+     "⏳ Kontakt steht aus", "Ueber FB suchen ODER Sarah um Vermittlung bitten (in der naechsten Casa-Antwort mit aufnehmen)"],
+
+    # === Brett bei Quinta Glamping ===
+    ["TBD", "Brett, Quinta Glamping (Algarve)", "Online-Buchung", "Sebastian (geplant)",
+     "Uebernachtung im Lake View Yurt (Casa dos Sonhos)",
+     "⏳ noch nicht gebucht", "Booking direkt: https://www.quintaglamping.com/rooms/lake-view-yurt.html - vor Anzahlung an Casa wertvoll"],
+]
+
+for col, h in enumerate(headers15, 1):
+    c = ws15.cell(row=1, column=col, value=h)
+    c.fill = HEADER_FILL
+    c.font = HEADER_FONT
+    c.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+    c.border = BORDER
+for r_idx, row in enumerate(log, 2):
+    for c_idx, val in enumerate(row, 1):
+        cell = ws15.cell(row=r_idx, column=c_idx, value=val)
+        cell.alignment = Alignment(vertical="top", wrap_text=True)
+        cell.border = BORDER
+        if r_idx % 2 == 0:
+            cell.fill = ALT_FILL
+        # Status-Spalte einfaerben
+        if c_idx == 6 and isinstance(val, str):
+            if "ABGELEHNT" in val or "Slot verloren" in val:
+                cell.fill = PatternFill(start_color="FFCCCC", end_color="FFCCCC", fill_type="solid")
+            elif "Antwort offen" in val or "Kontakt steht aus" in val or "noch nicht" in val:
+                cell.fill = PatternFill(start_color="FFF2CC", end_color="FFF2CC", fill_type="solid")
+            elif "Beantwortet" in val or "Quote erhalten" in val or "Info erhalten" in val:
+                cell.fill = PatternFill(start_color="D9EAD3", end_color="D9EAD3", fill_type="solid")
+widths15 = [14, 36, 22, 22, 60, 22, 50]
+for i, w in enumerate(widths15, 1):
+    ws15.column_dimensions[get_column_letter(i)].width = w
+ws15.row_dimensions[1].height = 30
+ws15.freeze_panes = "A2"
 
 
 # Speichern
