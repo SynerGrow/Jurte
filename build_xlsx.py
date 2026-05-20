@@ -402,6 +402,28 @@ rows2 = [
      "Inland Algarve, Transport ca. 500-1.000 EUR",
      "TOP-EMPFEHLUNG seit Casa-Slot weg: gebrauchte Casa-Qualitaet, physisch verifizierbar, sofortige Verfuegbarkeit, kein Vorauszahlungs-Risiko. Wichtige Fragen: Alter? Zustand Plane/Filz? Grund Verkauf? Algarve-Erfahrung mit Sommer/Winter."],
 
+    # === PT-Gebrauchtmarkt-Tiefenscan Mai 2026 ===
+    ["PT-Marktanalyse: Kategorie 1-5 Uebersicht", "Multi-Plattform", "Portugal komplett",
+     "Marktreport", "Marktbeobachtung",
+     "Kategorisiert nach 5 Kategorien (Sofortkauf / Anfrage lohnt / Vorsicht / Plattform-Uebersicht / Spezielle Quellen)",
+     "Siehe einzelne Eintraege",
+     "ANALYSE: PT-Used-Markt klein - 3-5 aktive >=6m Listings gleichzeitig. Konzentration Mafra/Lissabon, kaum Algarve-Lokal. Off-OLX-Leads (Sarah-Vermittlung) wertvoller als oeffentliche Marktplaetze. Empfehlung: OLX-Daily-Alert + FB-Gruppe Algarve 'Wanted'-Post + Sarah um weitere Vermittler bitten."],
+
+    ["FB Gruppe 'For Sale or Swap in the Algarve'",
+     "facebook.com/groups", "Algarve - lokale Expat-Community",
+     "Variabel", "Variabel",
+     "Variabel - meist neu/gebraucht aus Expat-Besitz",
+     "https://www.facebook.com/groups/FORSALEORSWAPINTHEALGARVE/",
+     "Lokal Algarve - kein Versand",
+     "Eigenen 'Wanted: 6-8m yurt' Post aufgeben. Beste Chance auf lokale Algarve-Funde direkt. Gross genug fuer Sichtbarkeit, lokal genug fuer Transport-Vorteil."],
+
+    ["CustoJusto.pt", "custojusto.pt", "Portugal weit",
+     "diverse", "selten - meist <500 EUR",
+     "Meist Spielzelte oder kleine Hobby-Jurten",
+     "https://www.custojusto.pt/portugal?o=1&q=yurt",
+     "Inland PT",
+     "Sekundaerplattform, deutlich weniger Listings als OLX. 1-2 Listings typisch. Beobachten alle 2-4 Wochen."],
+
 
     ["Kyrgyz Jurte 2,5m", "eBay.de / PicClick", "Windeck NRW (DE)",
      "ca. 5 m2 (2,5m)", 1550, "Neuwertig (Einzelangebot)",
@@ -942,13 +964,12 @@ rows7 = [
 
     ["TENDA YURT Original do Quirguistao (Marke Yourta - Modell 'Serenity')",
      "Palmela (Setubal, naehe Lissabon)",
-     "ca. 6 m (geschaetzt aus 28 m2)", "28 m2 (Kapazitaet 30 Personen)",
-     "Anfrage (Region Lissabon)",
+     "ca. 6 m (geschaetzt aus 28 m2)", "28 m2 (Kapazitaet 30 Personen)", 13000,
      "Neu / handgefertigt, original aus Quirguistao (Issyk-Kul See)",
      "Original kirgisisch: Schilf-Geflecht (Junco), Wolle und Filz. Komplette Originaldeko: Shyrdak-Teppich, Baskur-Band, Korpe-Linen-Kissen, geschnitzte Holztuer, Filz-Tuerverkleidung, dekorative Kuppelbaender",
      "Versand EXTRA (Region Lissabon - genauen Preis erfragen)",
      "https://www.olx.pt/d/anuncio/tenda-yurt-original-do-quirguisto-yurt-tent-original-from-kyrgystan-IDHEwz9.html",
-     "HOHE AUTHENTIZITAET: Originalimport aus Quirguistao, traditionelle Stickerei und Applikationen. PROBLEM ALGARVE: traditioneller Filz/Wolle nicht fuer 40C+ ausgelegt; Plane unter UV-Belastung anfaellig. Sehr dekorativ - eher fuer kuehlere Bergstandorte als heisse Algarve geeignet. Inserent in PT, kein Importzoll."],
+     "KATEGORIE ROT (NICHT EMPFOHLEN ALGARVE): HOHE AUTHENTIZITAET aber NICHT fuer Atlantikkueste. Traditioneller Filz/Wolle nicht fuer 40C+ ausgelegt; Plane unter UV-Belastung anfaellig; Salzluft schimmelt Wolle. Sehr dekorativ - eher fuer kuehlere Bergstandorte. 13.000 EUR fuer eine Deko-Jurte ist viel."],
 
     ["Yurt Made in Portugal (Hersteller-Insertion auf OLX)",
      "Loures (naehe Lissabon)",
@@ -983,11 +1004,29 @@ ws7.row_dimensions[note_row].height = 32
 note2 = ws7.cell(row=note_row + 2, column=1,
                  value=("WICHTIG: OLX-Angebote aendern sich taeglich. Vor Anfrage Live-Suche unter "
                         "https://www.olx.pt/moveis-casa-e-jardim/jardim-e-bricolage/q-yurts/ "
-                        "pruefen. Recherche-Stand: 2026-05-11."))
+                        "pruefen. Recherche-Stand: 2026-05-21."))
 note2.alignment = Alignment(wrap_text=True, vertical="top")
 note2.font = Font(italic=True, color="666666")
 ws7.merge_cells(start_row=note_row + 2, start_column=1, end_row=note_row + 2, end_column=10)
 ws7.row_dimensions[note_row + 2].height = 32
+
+# PT-Used-Markt-Tiefenscan Mai 2026
+note3 = ws7.cell(row=note_row + 4, column=1,
+                 value=("PT-USED-MARKT TIEFENSCAN MAI 2026: Markt ist klein - max 3-5 aktive >=6m Listings gleichzeitig. "
+                        "Konzentration Mafra/Lissabon, kaum direkt in Algarve. "
+                        "EMPFOHLENE PLATTFORMEN ZUM BEOBACHTEN: "
+                        "1) OLX.pt https://www.olx.pt/moveis-casa-e-jardim/q-yurts/ (Hauptkanal); "
+                        "2) Facebook Marketplace Portugal + 'For Sale or Swap in the Algarve' Gruppe https://www.facebook.com/groups/FORSALEORSWAPINTHEALGARVE/ (eigenen Wanted-Post aufgeben!); "
+                        "3) CustoJusto.pt https://www.custojusto.pt/ (selten); "
+                        "4) Casa dos Sonhos Facebook https://www.facebook.com/yurtscasadossonhos/ (sporadische Secondhand-Posts); "
+                        "5) Hipcamp + Workaway Algarve-Hosts direkt fragen (Glamping-Sites verkaufen manchmal). "
+                        "WICHTIGSTES OFF-MARKT-LEAD: Paula Young via Sarah-Vermittlung (gebrauchte 7,3m Casa-Jurte). "
+                        "EXPERTEN-FAZIT: Casa-Jurten kommen kaum auf Used-Markt (Hersteller-Wartelisten + Eigentuemer halten Jahre). "
+                        "Off-OLX-Leads (Sarah-Vermittlung, FB-Gruppe Wanted-Post) sind wertvoller als oeffentliche Marktplaetze."))
+note3.alignment = Alignment(wrap_text=True, vertical="top")
+note3.font = Font(italic=True, color="2E5C8A")
+ws7.merge_cells(start_row=note_row + 4, start_column=1, end_row=note_row + 4, end_column=10)
+ws7.row_dimensions[note_row + 4].height = 120
 
 
 # ============================================================
