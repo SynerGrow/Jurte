@@ -2089,6 +2089,241 @@ ws15.row_dimensions[1].height = 30
 ws15.freeze_panes = "A2"
 
 
+# ---------- Sheet 16: DIY Bauplan-Quellen (Deep Research Mai 2026) ----------
+ws16 = wb.create_sheet("16 DIY Bauplan-Quellen")
+headers16 = ["Kategorie", "Quelle", "Typ", "Sprache", "Link", "Bewertung 6-9m"]
+quellen_bauplan = [
+    # === PFLICHT-3 ===
+    ["1 Pflicht-Quelle", "Paul King: 'The Complete Yurt Handbook'",
+     "Buch (~25 EUR)", "Englisch",
+     "https://www.amazon.co.uk/Complete-Yurt-Handbook-Paul-King/dp/1899233083",
+     "Standardwerk: 121 Seiten, 3 Jurten-Typen in mehreren Groessen, Materiallisten, Worked Examples. UNVERZICHTBAR."],
+    ["1 Pflicht-Quelle", "Paul King: 'Build Your Own Yurt' (Vorgaengerwerk)",
+     "Free PDF", "Englisch",
+     "https://azinelibrary.org/approved/build-your-own-yurt-1.pdf",
+     "Kostenlos. 3m-Beispiel aber Logik skalierbar. Idealerweise VOR Buchkauf lesen."],
+    ["1 Pflicht-Quelle", "SimplyDifferently.org Yurt Calculator",
+     "Web-Tool kostenlos", "Englisch",
+     "https://simplydifferently.org/Yurt_Notes",
+     "GOLDSTANDARD. Du gibst Durchmesser ein -> exakte Latten-Anzahl, Bohrwinkel, Uni-Laengen, Tono-Bemassung. Pflicht."],
+    ["1 Pflicht-Quelle", "SimplyDifferently Construction PDF",
+     "Free PDF", "Englisch",
+     "https://simplydifferently.org/DL/yurt_construction_document.pdf",
+     "Vertieftes PDF mit Konstruktions-Detail."],
+
+    # === PLATTFORM ===
+    ["2 Plattform", "Pacific Yurts: 20 ft / 6,1 m Plattform-Plan",
+     "Free PDF", "Englisch",
+     "https://www.yurts.com/wp-content/uploads/2023/12/20ft-Pacific-Yurts-Platform-Plan.pdf",
+     "Direkt fuer 6,1m verwendbar. Standard-USA-Bauweise."],
+    ["2 Plattform", "Pacific Yurts: 24 ft / 7,3 m Plattform-Plan",
+     "Free PDF", "Englisch",
+     "https://www.yurts.com/wp-content/uploads/2023/12/24ft-Pacific-Yurts-Platform-Plan.pdf",
+     "Direkt fuer 7,3m. Fuer 8m um ~10% skalieren."],
+    ["2 Plattform", "Pacific Yurts Setup Manual 20/24/30 ft",
+     "Free PDF", "Englisch",
+     "https://www.yurts.com/wp-content/uploads/2023/12/Set-Up-Manual_20-24-30-Yurts.pdf",
+     "Komplettes Aufbau-Manual."],
+    ["2 Plattform", "Pacific Yurts Download-Hub",
+     "Web-Hub", "Englisch", "https://www.yurts.com/downloads/",
+     "Alle Pacific-Yurts-PDFs zentral."],
+    ["2 Plattform", "That Yurt Blog: Foundations, Beams, Blocking",
+     "Web-Artikel", "Englisch",
+     "https://www.thatyurt.com/yurt-journal/yurt-platform-building-1/",
+     "Detaillierte Foto-Doku Plattform-Aufbau."],
+    ["2 Plattform", "Krinner Ground Screws",
+     "Hersteller-Website", "Englisch/Deutsch",
+     "https://www.krinner.io/en/",
+     "Schraubpfaehle-Marktfuehrer. KSF-M 800mm Standard fuer 8m-Yurte."],
+    ["2 Plattform", "Krinner Foundation Construction Guide",
+     "Hersteller-Tutorial", "Englisch",
+     "https://www.krinner.io/en/foundation-construction/ground-screws/",
+     "Schritt-fuer-Schritt Schraubpfahl-Einbau."],
+    ["2 Plattform", "Shelter Designs Platform Guide",
+     "Web-Artikel", "Englisch",
+     "https://www.shelterdesigns.net/learn-about-yurts/how-to-plan-your-yurt/how-to-build-a-yurt-platform/",
+     "Alternative Plattform-Bauweise."],
+
+    # === KHAANA (Lattengitter) ===
+    ["3 Khaana", "The Delmer Yurt Blog: Khana",
+     "Web-Foto-Doku", "Englisch",
+     "http://thedelmeryurt.blogspot.com/p/khana.html",
+     "Detaillierte Foto-Schritte Khaana-Konstruktion. Sehr nuetzlich."],
+    ["3 Khaana", "The Yurt Is Born: Assembling Lattice Wall",
+     "Web-Tutorial", "Englisch",
+     "https://theyurtisborn.wordpress.com/2013/01/15/assembling-the-lattice-wall-section/",
+     "Schritt-fuer-Schritt mit Tipps zur Bohr-Schablone."],
+    ["3 Khaana", "ThePlywood.com - How to Make a Yurt",
+     "Web-Tutorial", "Englisch", "https://theplywood.com/yurt/",
+     "Materialliste + Bauanleitung."],
+    ["3 Khaana", "Outdoor Happens Homestead - Build a Yurt",
+     "Web-Artikel", "Englisch",
+     "https://www.outdoorhappens.com/how-to-build-a-yurt/",
+     "Materialliste + Kosten + DIY-Kit-Anbieter."],
+    ["3 Khaana", "Instructables: Yurt Without Steel (10 Steps)",
+     "Web-Tutorial", "Englisch", "https://www.instructables.com/Yurt/",
+     "Holz-only-Variante ohne Stahl-Schrauben."],
+
+    # === TONO (Kronenring) ===
+    ["4 Tono", "The Delmer Yurt Blog: Crown",
+     "Web-Foto-Doku", "Englisch",
+     "http://thedelmeryurt.blogspot.com/p/crown.html",
+     "Tono-Konstruktion: 4-lagig verleimt, Bohrwinkel-Schablone, Dichtung."],
+    ["4 Tono", "Solaripedia: Yurt Roof Ring",
+     "Web-Artikel", "Englisch",
+     "https://www.solaripedia.com/13/318/3704/yurt_roof_ring.html",
+     "Architektonische Detail-Beschreibung."],
+    ["4 Tono", "Felting and Fiber Studio: Yurt Tono",
+     "Blog-Artikel", "Englisch",
+     "https://feltingandfiberstudio.com/2013/08/29/yurt-tono-and-a-felting-party/amp/",
+     "Tono-Bau Schritt-fuer-Schritt mit Filz-Detail."],
+    ["4 Tono", "Yurt Forum: DIY Center Ring",
+     "Forum-Diskussion", "Englisch",
+     "https://www.yurtforum.com/forums/building-a-yurt-f3/diy-yurt-center-ring-any-ideas-529.html",
+     "Community-Erfahrungen Tono selbst bauen."],
+
+    # === AUSSENPLANE / COVER ===
+    ["5 Plane", "The Delmer Yurt Blog: Canvas Exterior",
+     "Web-Foto-Doku", "Englisch",
+     "http://thedelmeryurt.blogspot.com/p/canvas-exterior.html",
+     "Schnittmuster + Naehtechnik. WICHTIG fuer Maß-Konsistenz."],
+    ["5 Plane", "Outdoor Sewing Solutions UK: Designing Your Yurt",
+     "Web-Tutorial", "Englisch",
+     "https://outdoorsewingsolutions.co.uk/designing-your-yurt/",
+     "Pattern-Designer-Tutorial mit Bemassungs-Logik."],
+    ["5 Plane", "Yurting: Sewing Canvas with Sailrite",
+     "Blog-Artikel", "Englisch",
+     "https://diyode.com/blog/2014/01/yurting-sewing-the-canvas-with-the-sailrite-and-yurt-dwelling-tips/",
+     "Industrie-Naehmaschinen-Tipps + Yurten-Leben."],
+    ["5 Plane", "Beowulf Industrial Sewing: Yurt Covers",
+     "Web-Anbieter", "Englisch", "https://www.beowulfsewing.com/yurt-covers",
+     "Professionelle Cover-Naeher in USA. Konzepte uebertragbar."],
+    ["5 Plane", "Yurtcovers.com Broker Advice",
+     "Web-Artikel", "Englisch", "http://yurtcovers.com/yurtbroker-advice/",
+     "Cover-Profi-Tipps."],
+
+    # === VIDEO-TUTORIALS ===
+    ["6 Video", "Kents of Cornwall: Full Tutorial 5m",
+     "YouTube", "Englisch",
+     "https://www.youtube.com/watch?v=tBRt4yEqwYA",
+     "Klassisch 5m, Logik fuer 6-8m uebertragbar."],
+    ["6 Video", "How to Build an ORON Yurt - Full Step by Step",
+     "YouTube", "Englisch",
+     "https://www.youtube.com/watch?v=8p_-3X1C7jA",
+     "Moderne Bauweise, Komplett-Anleitung."],
+    ["6 Video", "Building Yurt Platform & Raising Playlist (30ft)",
+     "YouTube Playlist", "Englisch",
+     "https://www.youtube.com/playlist?list=PLCu9QeIvVTyZjdRf3cY-y2CHOzrMahXHY",
+     "30-ft (9m) komplette Doku - direkt anwendbar fuer Sebastians 8m."],
+    ["6 Video", "Inside DIY Yurt - Registered Home in Germany",
+     "YouTube", "Englisch",
+     "https://www.youtube.com/watch?v=wNWlieH2ha0",
+     "Wohnnutzung-Beispiel mit Bau-Genehmigung. Inspirations-Video."],
+    ["6 Video", "Strongest Yurt - Full Build",
+     "YouTube", "Englisch",
+     "https://www.youtube.com/watch?v=zIcRn50oh_E",
+     "Robuste Bauweise fuer extremes Klima."],
+    ["6 Video", "Shelter Designs Video Library",
+     "Web-Hub", "Englisch",
+     "https://www.shelterdesigns.net/learn-about-yurts/yurt-building-videos/",
+     "Mehrere Videos: Flooring, Framing, Wiring, Plumbing."],
+    ["6 Video", "Couple Building YURT Timelapse",
+     "YouTube", "Englisch",
+     "https://www.youtube.com/watch?v=-6f_GIqqZ8Y",
+     "Komplett-Aufbau visualisiert in 15min Timelapse."],
+
+    # === KOMPAKTE GUIDES ===
+    ["7 Step-by-Step Guide", "HomeBiogas: DIY Yurt Complete Guide",
+     "Web-Guide", "Englisch", "https://www.homebiogas.com/blog/diy-yurt/",
+     "Kompakte Komplett-Anleitung."],
+    ["7 Step-by-Step Guide", "Outdoor Happens: Build a Yurt",
+     "Web-Guide", "Englisch",
+     "https://www.outdoorhappens.com/how-to-build-a-yurt/",
+     "Materialliste, Kosten, DIY-Kit-Anbieter."],
+    ["7 Step-by-Step Guide", "Woodworkers Institute: Traditional Yurt",
+     "Web-Guide", "Englisch",
+     "https://woodworkersinstitute.com/how-to-make-a-yurt/",
+     "Handwerker-Perspektive."],
+    ["7 Step-by-Step Guide", "Yurtnotes.com Illustrated Guide",
+     "Web-Guide", "Englisch",
+     "https://yurtnotes.com/yurt-construction-a-helpful-illustrated-guide/",
+     "Illustrierte Schritte."],
+    ["7 Step-by-Step Guide", "Milkwood Permaculture: Yurt Resources",
+     "Web-Guide", "Englisch",
+     "https://www.milkwood.net/2012/07/04/building-a-yurt-from-scratch-resources/",
+     "Permakultur-Perspektive auf Bau."],
+
+    # === COMMUNITIES & FOREN ===
+    ["8 Community", "Yurt Forum",
+     "Forum", "Englisch", "https://www.yurtforum.com/",
+     "Hauptforum fuer DIY-Fragen, Bauprobleme."],
+    ["8 Community", "Felting and Fiber Studio - Yurt Series",
+     "Blog-Serie", "Englisch",
+     "https://feltingandfiberstudio.com/category/yurt/",
+     "51-Tage-Bau-Dokumentation."],
+    ["8 Community", "YurtInfo.org - Plans",
+     "Web-Hub", "Englisch", "https://www.yurtinfo.org/yurt-plans",
+     "Linkliste zu Plaenen."],
+    ["8 Community", "YurtInfo.org - Resources",
+     "Web-Hub", "Englisch", "https://www.yurtinfo.org/yurt-resources",
+     "Allgemeine Ressourcen."],
+    ["8 Community", "YurtInfo.org - Bookstore",
+     "Web-Hub", "Englisch", "https://www.yurtinfo.org/yurt-bookstore",
+     "Buch-Empfehlungen."],
+
+    # === ENGINEERING ===
+    ["9 Engineering Wind", "Structural Basics: Wind Loads on Pitched Roofs",
+     "Web-Artikel", "Englisch",
+     "https://structuralbasics.substack.com/p/wind-loads-on-pitched-roofs",
+     "Wind-Last-Berechnung Schraegdach. Algarve-Atlantik-Wind kritisch."],
+    ["9 Engineering Wind", "Omnicalculator: Wind Load Calculator",
+     "Online-Rechner", "Englisch",
+     "https://www.omnicalculator.com/physics/wind-load",
+     "Quick-Calc fuer Sturm-Auslegung."],
+
+    # === ENGINEERING-ZUSAMMENFASSUNG fuer Sebastian 8m ===
+    ["10 Sebastian-Specs (8m)", "Tono Durchmesser",
+     "Spec", "DE",
+     "180 cm (Atilla-Standard, mit jeder Khaana-Spitze=Uni) oder 170 cm (Adorjan-Standard, mit 48 massiven 5x10cm Rafters)",
+     "EXTRA WICHTIG: 120 cm waere zu klein! Mehrfach bestaetigt durch Atilla + Adorjan."],
+    ["10 Sebastian-Specs (8m)", "Uni Anzahl",
+     "Spec", "DE",
+     "48 (5x10cm massiv) ODER 64-80 (3,5x3,5cm klassisch)",
+     "Wahl haengt von Tono-Bauart ab."],
+    ["10 Sebastian-Specs (8m)", "Khaana-Latten",
+     "Spec", "DE", "~380 Stueck, 30x10 mm, 2,1 m Laenge",
+     "8 Sektionen. Edelkastanie ideal fuer Algarve."],
+    ["10 Sebastian-Specs (8m)", "Wandhoehe",
+     "Spec", "DE", "2,00 m (Casa-Standard)",
+     "Hoeher als traditionell mongolisch (1,70m)."],
+    ["10 Sebastian-Specs (8m)", "Bohrwinkel Tono fuer Uni",
+     "Spec", "DE", "30 Grad",
+     "Mit Bohrlehre arbeiten - Wiederholgenauigkeit kritisch."],
+    ["10 Sebastian-Specs (8m)", "Sturm-Verankerung Algarve",
+     "Spec", "DE", "8-10 Erdanker + 5-Tonnen Ratschen ueber Dach",
+     "Atlantik-Wind bis 100 km/h - obligatorisch."],
+]
+
+for col, h in enumerate(headers16, 1):
+    c = ws16.cell(row=1, column=col, value=h)
+    c.fill = HEADER_FILL
+    c.font = HEADER_FONT
+    c.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+    c.border = BORDER
+for r_idx, row in enumerate(quellen_bauplan, 2):
+    for c_idx, val in enumerate(row, 1):
+        cell = ws16.cell(row=r_idx, column=c_idx, value=val)
+        cell.alignment = Alignment(vertical="top", wrap_text=True)
+        cell.border = BORDER
+        if r_idx % 2 == 0:
+            cell.fill = ALT_FILL
+widths16 = [22, 36, 18, 12, 50, 50]
+for i, w in enumerate(widths16, 1):
+    ws16.column_dimensions[get_column_letter(i)].width = w
+ws16.row_dimensions[1].height = 30
+ws16.freeze_panes = "A2"
+
+
 # Speichern
 output_path = "/home/user/Jurte/Jurten_Recherche_Algarve.xlsx"
 wb.save(output_path)
