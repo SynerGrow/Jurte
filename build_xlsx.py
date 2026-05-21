@@ -369,6 +369,34 @@ rows1 = [
      "BE->PT ca. 1.500-2.000 EUR",
      "EU-angepasste mongolische Jurten. Weniger transparent als ZenYurts.",
      "Anfrage"],
+
+    ["Green World (Ukraine, Liefert PT)",
+     "Ukraine, Vertrieb weltweit", "https://greenworld.house/pt/yurts/",
+     "24 / 50 / 56 / 78 / 113 / 254 m2 (50m2 = 8m Durchmesser)",
+     "Anfrage (Preisliste ab 01.01.2024)",
+     "Vorgefertigter Holz-Frame, modular, durchnummeriert, mit Anleitung",
+     "10 JAHRE STRUKTUR-GARANTIE + 12 Mon. versteckte Maengel",
+     "Lieferung in 9 Laender weltweit, auch PT. Versand ab UA per Spedition.",
+     "VERDACHT: moeglicher Verkaeufer hinter OLX-Listings IDJatvu + IDJbO7n (beide 8m). Produktion 2 Monate. Plane-Spec unklar (vermutlich Standard, nicht marine-grade). Ukraine-Hersteller -> Versand- und politisches Risiko abklaeren. 8m / 50m2 koennte sehr wettbewerbsfaehig sein wenn Plane Algarve-tauglich ist.",
+     "Anfrage (Schaetzung 8m/50m2 ca. 8.000-14.000 EUR + Versand)"],
+
+    ["Woodspot Solutions (PT)",
+     "Portugal", "https://www.woodspotsolutions.com/pt/yurts-pt",
+     "diverse", "Anfrage",
+     "Inspiriert traditionellem Design, modernisiert fuer mehr Komfort",
+     "Mittel - PT-lokal aber wenig Info im Netz",
+     "Innerhalb PT - kein Import-Zoll",
+     "Weiterer PT-Anbieter, weniger sichtbar als Casa/Bēt/Yonatan. Direktanfrage erforderlich.",
+     "Anfrage"],
+
+    ["Celtic Yurts (Galicia, ES)",
+     "Spanien (Galicia, NW Iberia)", "https://www.celticyurts.com/en",
+     "diverse", "Preisliste auf Website",
+     "Hochwertige Materialien, Strapazierfaehigkeit",
+     "Mittel - Galicien-Klima vergleichbar Nord-PT/Atlantikkueste",
+     "ES->PT relativ guenstig 500-1.500 EUR (Galicien grenzt an PT)",
+     "Optional Selbstbau-Workshop (2-3 Wochen Werkstatt + fertige Jurte zum Mitnehmen).",
+     "Anfrage"],
 ]
 
 # sortiere nach Preis EUR (numerisch wo moeglich)
@@ -970,6 +998,24 @@ rows7 = [
      "Versand EXTRA (Region Lissabon - genauen Preis erfragen)",
      "https://www.olx.pt/d/anuncio/tenda-yurt-original-do-quirguisto-yurt-tent-original-from-kyrgystan-IDHEwz9.html",
      "KATEGORIE ROT (NICHT EMPFOHLEN ALGARVE): HOHE AUTHENTIZITAET aber NICHT fuer Atlantikkueste. Traditioneller Filz/Wolle nicht fuer 40C+ ausgelegt; Plane unter UV-Belastung anfaellig; Salzluft schimmelt Wolle. Sehr dekorativ - eher fuer kuehlere Bergstandorte. 13.000 EUR fuer eine Deko-Jurte ist viel."],
+
+    ["Yurt de 8 metros com janela panoramica (OLX neu Mai 2026)",
+     "Standort tbd (Sebastian: Details bitte teilen)",
+     "8 m", "ca. 50 m2", "Preis tbd",
+     "Neu, mit Panoramafenster",
+     "Konstruktion tbd - Sebastian Details aus Listing bitte teilen",
+     "tbd",
+     "https://www.olx.pt/d/anuncio/yurt-de-8-metros-de-dimetro-com-janela-panormica-IDJatvu.html",
+     "NEUFUND Mai 2026: 8m mit Panoramafenster. Wahrscheinlich vom selben Verkaeufer wie IDJbO7n (beide 8m Listings). MOEGLICHER ANBIETER: Green World (UA, Yurts ab 50m2/8m verfuegbar, 10-J. Struktur-Garantie). Details fehlen - Sebastian muss Preis/Verkaeufer/Standort teilen."],
+
+    ["Yurt luxuosa NOVA 8 metros (OLX neu Mai 2026)",
+     "Standort tbd (Sebastian: Details bitte teilen)",
+     "8 m", "ca. 50 m2", "Preis tbd",
+     "NEU - Luxus-Variante",
+     "Konstruktion tbd - Sebastian Details aus Listing bitte teilen",
+     "tbd",
+     "https://www.olx.pt/d/anuncio/yurt-luxuosa-nova-8-metros-de-dimetro-IDJbO7n.html",
+     "NEUFUND Mai 2026: 'Luxus' + 'NEU' 8m. Wahrscheinlich vom selben Verkaeufer wie IDJatvu (zwei verschiedene Stueck auf Lager). MOEGLICHER ANBIETER: Green World UA. Details fehlen - Sebastian muss Preis/Verkaeufer/Standort teilen."],
 
     ["Yurt Made in Portugal (Hersteller-Insertion auf OLX)",
      "Loures (naehe Lissabon)",
@@ -2054,6 +2100,23 @@ log = [
     ["TBD", "Paula Young (FB 'Paula Vegan Chef')", "Facebook (offen)",
      "Sebastian -> Paula", "Anfrage zur gebrauchten 7,3m Casa-Jurte",
      "⏳ Kontakt steht aus", "Ueber FB suchen ODER Sarah um Vermittlung bitten (in der naechsten Casa-Antwort mit aufnehmen)"],
+
+    # === Neue OLX-Funde Mai 2026 ===
+    ["21.05.2026", "OLX 8m Listing IDJatvu", "OLX Direktansicht",
+     "Sebastian -> Sebastian (Recherche)",
+     "Yurt 8m mit Panoramafenster - Listing entdeckt",
+     "⏳ Details fehlen",
+     "Sebastian muss Preis/Verkaeufer/Standort/Material teilen (Sandbox kann OLX nicht lesen). Verdacht: Green World UA Vertrieb."],
+    ["21.05.2026", "OLX 8m Listing IDJbO7n", "OLX Direktansicht",
+     "Sebastian -> Sebastian (Recherche)",
+     "Yurt luxuosa NOVA 8m - Listing entdeckt (gleicher Verkaeufer wie IDJatvu?)",
+     "⏳ Details fehlen",
+     "Sebastian muss Listing-Details teilen. Beide Listings wahrscheinlich derselbe Anbieter."],
+    ["TBD", "Green World (Ukraine)", "Web/E-Mail (zu pruefen)",
+     "Sebastian -> Green World",
+     "Anfrage 8m / 50m2 Yurte fuer Algarve, 10-J. Strukturgarantie, Versandkosten PT, Plane-Spezifikation",
+     "⏳ Anfrage moeglich",
+     "WENN OLX-Listings nicht von ihnen: trotzdem direkt anfragen ueber greenworld.house/pt/yurts/ - moeglicher 4. PT-Lieferant neben Casa/Bēt/Yonatan."],
 
     # === Brett bei Quinta Glamping ===
     ["TBD", "Brett, Quinta Glamping (Algarve)", "Online-Buchung", "Sebastian (geplant)",
