@@ -397,6 +397,16 @@ rows1 = [
      "ES->PT relativ guenstig 500-1.500 EUR (Galicien grenzt an PT)",
      "Optional Selbstbau-Workshop (2-3 Wochen Werkstatt + fertige Jurte zum Mitnehmen).",
      "Anfrage"],
+
+    ["Dani's Community-Projekt (Telegram-Kontakt Mai 2026, 7m im Bau)",
+     "Standort tbd (vermutlich PT, zu erfragen)",
+     "Aktuell 7m im Bau, lebt selbst in 8m, hat 6m als Gaeste-Jurte",
+     "tbd (Preis-Anfrage offen)",
+     "Eigenes Design seit 8 Jahren bewohnt - Familien-Projekt/Community. Bauen selbst. 7m war fuer daenische Familie geplant, jetzt verfuegbar.",
+     "Sehr gut potentiell - 8 Jahre eigene Praxiserfahrung mit dem Modell. Materialspec noch zu erfragen (Plane, Daemmung, Holz).",
+     "Standort + Transport zu erfragen",
+     "https://t.me/ (Telegram-Gruppe Jurten Portugal - Direkt-Kontakt 'Dani')",
+     "BEMERKENSWERT: KEIN klassischer Hersteller/Reseller, sondern echtes Community-Projekt. 7m fertig August/September 2026 = schneller als Casa 2027. Du kannst noch Spezifikationen mitbestimmen wahrend Bau. 'Personal plans changed'-Story verifizierbar (daenische Familie blieb in DK). Anpassbar - Sebastian kann Algarve-spezifische Materialwuensche einbringen. PARALLEL HALTEN ZU BENEDIKT 8M (15k) UND CASA 2027."],
 ]
 
 # sortiere nach Preis EUR (numerisch wo moeglich)
@@ -2123,6 +2133,19 @@ log = [
      "Anfrage 8m / 50m2 Yurte fuer Algarve, 10-J. Strukturgarantie, Versandkosten PT, Plane-Spezifikation",
      "⏳ Anfrage moeglich",
      "WENN OLX-Listings nicht von ihnen: trotzdem direkt anfragen ueber greenworld.house/pt/yurts/ - moeglicher 4. PT-Lieferant neben Casa/Bēt/Yonatan."],
+
+    # === Telegram-Gruppe Jurten Portugal Mai 2026 ===
+    ["~22.05.2026", "Telegram-Gruppe 'Jurten Portugal'", "Telegram-Post (DE)",
+     "Sebastian -> Gruppe", "Eigene Wanted-Anfrage 6-8m Jurte fuer dauerhaftes Wohnen West-Algarve, 15k Budget",
+     "✓ Gepostet", "Auf Antworten warten - bisher 1 konkrete Antwort von 'Dani'"],
+    ["23.05.2026 07:00", "Dani (Telegram, Community-Projekt PT?)", "Telegram DM",
+     "Dani -> Sebastian",
+     "Verkauft 7m Custom-Build noch im Bau. Eigenes Design, seit 8J in 8m gewohnt. Hatte fuer daenische Familie geplant - jetzt verfuegbar. 200cm Wand, 150cm Skylight, Schafwoll-Filz, 2 Doppeltueren. Fertig August/September 2026.",
+     "✓ Antwort erhalten", "Sebastian hat zurueckgeschrieben mit Standort+Specs+Preisfrage - warten auf Folge-Antwort"],
+    ["23.05.2026 07:07", "Dani (Telegram)", "Telegram DM",
+     "Sebastian -> Dani",
+     "Standort? Algarve? Selbst gebaut? Materialspec (Fenster, Daemmungsdicke)? Preisvorstellung?",
+     "✓ Gesendet", "Auf Antwort warten - dann Material-/Preis-Bewertung"],
 
     # === Brett bei Quinta Glamping ===
     ["TBD", "Brett, Quinta Glamping (Algarve)", "Online-Buchung", "Sebastian (geplant)",
