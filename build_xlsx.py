@@ -2426,6 +2426,141 @@ ws16.row_dimensions[1].height = 30
 ws16.freeze_panes = "A2"
 
 
+# ---------- Sheet 17: Guenstigste Plattform 7m fuer Dani-Setup ----------
+ws17 = wb.create_sheet("17 Plattform 7m Kostenrechnung")
+ws17.column_dimensions["A"].width = 50
+ws17.column_dimensions["B"].width = 12
+ws17.column_dimensions["C"].width = 12
+ws17.column_dimensions["D"].width = 14
+ws17.column_dimensions["E"].width = 55
+
+t = ws17.cell(row=1, column=1, value="Guenstigste isolierte Plattform 7m fuer Algarve-Winter (Sebastians Wunsch Mai 2026)")
+t.font = TITLE_FONT
+ws17.merge_cells("A1:E1")
+ws17.row_dimensions[1].height = 28
+
+for col, h in enumerate(["Position", "Menge", "Einheit", "Gesamt EUR", "Bemerkung"], 1):
+    c = ws17.cell(row=2, column=col, value=h)
+    c.fill = HEADER_FILL
+    c.font = HEADER_FONT
+    c.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+    c.border = BORDER
+
+platt = [
+    ("VARIANTE A - Absolut guenstig EPS-Daemmung", "", "", "",
+     "Cheapest fuer 41 m² Plattform; Schimmel-Risiko langfristig"),
+    ("Plattform-Durchmesser 7,2 m (41 m² Flaeche)", "7,2 m", "Aussen", "",
+     "Yurt 7m + 10cm Ueberstand"),
+    ("Fundament Stein-/min. Beton 8 Punkte", 8, "Stueck", 145,
+     "Lokal beschaffbar"),
+    ("Tragbalken Kiefer KDI 50x200x4m", 25, "Stueck", 700,
+     "Leroy Merlin / AKI / Bauhaus PT"),
+    ("Schrauben+Beschlaege A4", 1, "Pauschal", 150, "Wuerth PT"),
+    ("PE-Folie 200 µ", 45, "m²", 90, "Bauhaus 2 EUR/m²"),
+    ("EPS 100mm WLG 035 (R~2,8)", 41, "m²", 205,
+     "Cheapest aber nicht atmungsaktiv"),
+    ("OSB-Verlegeplatte 22mm Deck", 41, "m²", 410, "Bedeckbar mit Teppich"),
+    ("Boden-Schrauben Spax A4", 1, "Pauschal", 50, ""),
+    ("Reserve 10%", 1, "Pauschal", 175, ""),
+    ("VARIANTE A TOTAL", "", "", 1925, "Absolutes Minimum"),
+
+    ("", "", "", "", ""),
+    ("VARIANTE B - Eco-guenstig mit KORK EMPFEHLUNG", "", "", "",
+     "Portugiesisches Material, atmungsaktiv"),
+    ("Fundament Stein-/Beton 8 Punkte", 8, "Stueck", 145, ""),
+    ("Tragbalken Kiefer KDI 50x200x4m", 25, "Stueck", 700, ""),
+    ("Schrauben+Beschlaege A4", 1, "Pauschal", 150, ""),
+    ("PE-Folie 200 µ", 45, "m²", 90, ""),
+    ("KORK 80mm Sofalca/Amorim (R~2,0)", 41, "m²", 738,
+     "Portugiesisches Material, diffusionsoffen"),
+    ("Kiefer KDI T+G Boden 22mm", 41, "m²", 738, "Schoenere Optik"),
+    ("Boden-Schrauben", 1, "Pauschal", 50, ""),
+    ("Reserve 10%", 1, "Pauschal", 270, ""),
+    ("VARIANTE B TOTAL", "", "", 2880,
+     "EMPFEHLUNG - 955 mehr als A, dafuer oeko+atmungsaktiv"),
+
+    ("", "", "", "", ""),
+    ("VARIANTE C - Variante B + Krinner statt Beton", "", "", "",
+     "Kein Beton, vollstaendig reversibel"),
+    ("Krinner KSF-M 800mm Schraubpfaehle", 8, "Stueck", 280,
+     "Statt Stein/Beton"),
+    ("Erdraketen-Miete oder Eigenhand", 1, "Pauschal", 80,
+     "Bauhaus PT, oder per Hand 4 Std Arbeit gratis"),
+    ("Rest wie Variante B (Tragwerk+Kork+Deck+Schrauben+Reserve)", "", "", 2735, ""),
+    ("VARIANTE C TOTAL", "", "", 3095,
+     "Top-Setup: kein Beton + oeko + Kork"),
+
+    ("", "", "", "", ""),
+    ("R-WERT VERGLEICH", "", "", "", ""),
+    ("EPS 100mm Plattform", "", "", "R~2,8", "Sehr gut thermisch nicht atmungsaktiv"),
+    ("Kork 80mm Plattform", "", "", "R~2,0", "Gut + diffusionsoffen"),
+    ("Dani Wand 4cm Schafwolle", "", "", "R~1,0",
+     "Plattform mit Kork ist DOPPELT so gut wie Danis Wand - kompensiert kalte Fuesse im Algarve-Winter"),
+
+    ("", "", "", "", ""),
+    ("PT-LIEFERANTEN", "", "", "", ""),
+    ("Kiefer KDI Tragwerk", "", "", "", "Leroy Merlin / AKI / Bauhaus PT"),
+    ("Kork 80mm", "", "", "",
+     "Sofalca (Coruche) https://www.sofalca.pt/ ODER Amorim (Santa Maria) https://www.amorim.com/"),
+    ("OSB / Kiefer-Boden", "", "", "", "Bauhaus / Leroy Merlin / AKI"),
+    ("Schrauben A4", "", "", "", "Wuerth Portugal"),
+    ("Krinner-Pfaehle", "", "", "", "Krinner DE-Versand oder Bauhaus PT"),
+
+    ("", "", "", "", ""),
+    ("INTEGRATION DANI 7M + KORK-PLATTFORM", "", "", "", ""),
+    ("Dani 7m mit Aufbau", "", "", 16000, ""),
+    ("Plattform Variante B (Kork DIY)", "", "", 2880, ""),
+    ("Transport Castelo de Vide -> Aljezur", "", "", 1000, "Schaetzung 400km"),
+    ("Werkzeug-Block (falls neu)", "", "", 300, "0 wenn vorhanden"),
+    ("Schattennetz Algarve", "", "", 240, ""),
+    ("TOTAL ALL-IN", "", "", 20420,
+     "Kork-Plattform spart 1.000-2.000 vs Casa-Style Premium-Plattform = Spielraum fuer 8cm Schafwolle-Upgrade bei Dani"),
+]
+
+row = 3
+for entry in platt:
+    a, b, c, d, e = entry
+    if isinstance(a, str) and a.startswith("VARIANTE") and "TOTAL" not in a:
+        cell = ws17.cell(row=row, column=1, value=a)
+        cell.font = Font(bold=True, size=12, color="2E5C8A")
+        ce = ws17.cell(row=row, column=5, value=e)
+        ce.font = Font(italic=True, color="666666")
+        ce.alignment = Alignment(wrap_text=True, vertical="top")
+        ws17.merge_cells(start_row=row, start_column=1, end_row=row, end_column=4)
+        ws17.row_dimensions[row].height = 22
+    elif isinstance(a, str) and a in ("R-WERT VERGLEICH", "PT-LIEFERANTEN", "INTEGRATION DANI 7M + KORK-PLATTFORM"):
+        cell = ws17.cell(row=row, column=1, value=a)
+        cell.font = Font(bold=True, size=12, color="2E5C8A")
+        ws17.merge_cells(start_row=row, start_column=1, end_row=row, end_column=5)
+        ws17.row_dimensions[row].height = 22
+    elif not a and not b and not c and not d and not e:
+        ws17.row_dimensions[row].height = 8
+    else:
+        c1 = ws17.cell(row=row, column=1, value=a)
+        c1.alignment = Alignment(wrap_text=True, vertical="top")
+        c1.border = BORDER
+        c2 = ws17.cell(row=row, column=2, value=b)
+        c2.alignment = Alignment(horizontal="center", vertical="top")
+        c2.border = BORDER
+        c3 = ws17.cell(row=row, column=3, value=c)
+        c3.alignment = Alignment(horizontal="center", vertical="top")
+        c3.border = BORDER
+        c4 = ws17.cell(row=row, column=4, value=d)
+        c4.alignment = Alignment(horizontal="right", vertical="top")
+        c4.border = BORDER
+        if isinstance(d, (int, float)):
+            c4.number_format = '#,##0 "EUR"'
+        c5 = ws17.cell(row=row, column=5, value=e)
+        c5.alignment = Alignment(wrap_text=True, vertical="top")
+        c5.border = BORDER
+        if isinstance(a, str) and ("TOTAL" in a):
+            c1.font = Font(bold=True)
+            c4.font = Font(bold=True, size=12, color="2E5C8A")
+        ws17.row_dimensions[row].height = max(20, min(45, 15 + len(str(e)) // 8))
+    row += 1
+ws17.freeze_panes = "A2"
+
+
 # Speichern
 output_path = "/home/user/Jurte/Jurten_Recherche_Algarve.xlsx"
 wb.save(output_path)
