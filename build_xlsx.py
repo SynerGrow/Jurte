@@ -2151,8 +2151,11 @@ log = [
      "✓ Volle Spec erhalten",
      "Antwort raus: Probeschlafen-Termin (Juni) + Plane-Upgrade-Anfrage (Sauleda statt Canvas) + Dickere Daemmung erfragen"],
     ["23.05.2026", "Dani (Castelo de Vide)", "Telegram DM", "Sebastian -> Dani",
-     "Wertschaetzende Antwort. Probeschlafen-Termin Juni Woche 2 oder 3 vorschlagen. Hybrid-Idee: Sauleda Marine-grade statt BW/Poly anfragen (ggf. ueber Algarve-Sattler in Vilamoura). Daemmungs-Upgrade auf 8cm erfragen.",
+     "Wertschaetzende Antwort. Probeschlafen-Termin Juni Woche 2 oder 3 vorschlagen. Hybrid-Idee: Sauleda Marine-grade statt BW/Poly anfragen (ggf. ueber Algarve-Sattler in Vilamoura). Daemmungs-Upgrade auf 8cm erfragen (geschaetzt +600-800 EUR).",
      "⏳ Zu senden", "Sebastians naechste Aktion - Antwort raus, Termin festlegen"],
+    ["23.05.2026", "Sebastian -> Selbst-Klaerung", "Analyse", "Intern",
+     "Frage 4cm Schafwolle Daemmung fuer Algarve-Winter ausreichend? Antwort: KNAPP. Dani's 4cm (R~1.05) ist halb so gut wie Bēt 8cm PET (R~2.1) und 1/3 vom DE-Niedrig-Bau-Standard. Aljezur-Atlantikkueste hat mildere Temperaturen als Castelo de Vide, aber starker Wind+Feuchtigkeit verstaerken Waermeverlust. MIT aktivem Holzofen+Top-Plattform-Daemmung (60-80mm Kork) = wohnen ja, mit Komfort-Limits. OHNE Heizen = nachts 8-12°C. DRINGEND: 8cm Upgrade bei Dani anfragen.",
+     "Analyse fertig", "Bei Dani 8cm Upgrade anfragen ODER Plattform-Daemmung als Kompensation auslegen (60-80mm Kork)"],
 
     # === Brett bei Quinta Glamping ===
     ["TBD", "Brett, Quinta Glamping (Algarve)", "Online-Buchung", "Sebastian (geplant)",
