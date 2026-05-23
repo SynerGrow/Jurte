@@ -398,15 +398,15 @@ rows1 = [
      "Optional Selbstbau-Workshop (2-3 Wochen Werkstatt + fertige Jurte zum Mitnehmen).",
      "Anfrage"],
 
-    ["Dani's Community-Projekt (Telegram-Kontakt Mai 2026, 7m im Bau)",
-     "Standort tbd (vermutlich PT, zu erfragen)",
-     "Aktuell 7m im Bau, lebt selbst in 8m, hat 6m als Gaeste-Jurte",
-     "tbd (Preis-Anfrage offen)",
-     "Eigenes Design seit 8 Jahren bewohnt - Familien-Projekt/Community. Bauen selbst. 7m war fuer daenische Familie geplant, jetzt verfuegbar.",
-     "Sehr gut potentiell - 8 Jahre eigene Praxiserfahrung mit dem Modell. Materialspec noch zu erfragen (Plane, Daemmung, Holz).",
-     "Standort + Transport zu erfragen",
-     "https://t.me/ (Telegram-Gruppe Jurten Portugal - Direkt-Kontakt 'Dani')",
-     "BEMERKENSWERT: KEIN klassischer Hersteller/Reseller, sondern echtes Community-Projekt. 7m fertig August/September 2026 = schneller als Casa 2027. Du kannst noch Spezifikationen mitbestimmen wahrend Bau. 'Personal plans changed'-Story verifizierbar (daenische Familie blieb in DK). Anpassbar - Sebastian kann Algarve-spezifische Materialwuensche einbringen. PARALLEL HALTEN ZU BENEDIKT 8M (15k) UND CASA 2027."],
+    ["Dani's Community-Projekt 7m Custom (Castelo de Vide, Alentejo)",
+     "Portugal - Castelo de Vide (Alto Alentejo, ca. 400 km von Aljezur)",
+     "7m Innenflaeche ca. 38 m2, Mittelhoehe 360 cm, Dachneigung 28 Grad",
+     "16.000 EUR inkl. Aufbau (Transport+Plattform extra)",
+     "Khaana: PINIE-Scherengitter, 200cm Wandhoehe. Dachring (Tono): DOUGLASIE. Dachkuppel 150cm doppeltes Plexiglas (stufenlos oeffenbar, windfest). Tueren: 2 Hartholz-Doppeltueren 155x200cm zweifach verglast. Daemmung: NUR 4cm Schafwolle (duenn!). Innenstoff: 100% Biobaumwolltuch. Aussenstoff: BW/Polyester 50/50 Canvas (NICHT UV-langlebig).",
+     "GEMISCHT FUER ALGARVE: Konstruktion super (200cm Wand, atmungsaktiv, anti-Schimmel-Design, 28 Grad Dachneigung), ABER Aussenplane BW/Poly 50/50 haelt in Algarve-Sonne nur 3-5 Jahre ohne UV-Schutz. Dani gibt das SELBST ZU + empfiehlt UV-Schutz drueber legen oder regelmaessigen Canvas-Tausch. 4cm Schafwolle ist duenn (Vergleich Bēt 8cm PET, jurte24 dicker).",
+     "Transport Castelo de Vide -> Aljezur: 800-1.500 EUR. Aufbau IM 16k-Preis. Plattform bauen sie KEINE (Sebastian baut lokal: 3.000-4.500 EUR).",
+     "Telegram Direkt-Kontakt 'Dani' (Gruppe Jurten Portugal)",
+     "STRATEGISCH WICHTIG: Probeschlafen im 6m-Modell ANGEBOTEN (= Casa-Style Verifikation moeglich!). Anpassbar waehrend Bau (Sebastian kann Sauleda-Plane statt Canvas vorschlagen = Hybrid-Idee). Fertig August/September 2026. Sebastian wohnt selbst seit 8 J. in einer baugleichen Jurte = echte Praxis. ABER all-in 20-22k + Canvas-Erneuerung alle 5-7 J. (+2-3,5k pro Zyklus) macht es teurer als Benedikt Yury 15k und Casa 7,3m bei 10-J. UV-Garantie. NUR EMPFEHLENSWERT mit Plane-Upgrade auf Sauleda/Tempotest."],
 ]
 
 # sortiere nach Preis EUR (numerisch wo moeglich)
@@ -2146,6 +2146,13 @@ log = [
      "Sebastian -> Dani",
      "Standort? Algarve? Selbst gebaut? Materialspec (Fenster, Daemmungsdicke)? Preisvorstellung?",
      "✓ Gesendet", "Auf Antwort warten - dann Material-/Preis-Bewertung"],
+    ["23.05.2026", "Dani (Castelo de Vide)", "Telegram DM", "Dani -> Sebastian",
+     "FULL SPECS+PREIS: 16k inkl. Aufbau. Standort Castelo de Vide. Khaana Pinie 200cm Wand, Tono Douglasie 150cm, 2 Hartholz-Doppeltueren 155x200, Mittelhoehe 360cm, 28 Grad Dachneigung, 4cm Schafwolle, BW-Innenliner Bio, Canvas Aussen BW/Poly 50/50. Plattform/Transport extra. UV-Schutz Empfehlung drueber legen. PROBESCHLAFEN IM 6M-MODELL ANGEBOTEN!",
+     "✓ Volle Spec erhalten",
+     "Antwort raus: Probeschlafen-Termin (Juni) + Plane-Upgrade-Anfrage (Sauleda statt Canvas) + Dickere Daemmung erfragen"],
+    ["23.05.2026", "Dani (Castelo de Vide)", "Telegram DM", "Sebastian -> Dani",
+     "Wertschaetzende Antwort. Probeschlafen-Termin Juni Woche 2 oder 3 vorschlagen. Hybrid-Idee: Sauleda Marine-grade statt BW/Poly anfragen (ggf. ueber Algarve-Sattler in Vilamoura). Daemmungs-Upgrade auf 8cm erfragen.",
+     "⏳ Zu senden", "Sebastians naechste Aktion - Antwort raus, Termin festlegen"],
 
     # === Brett bei Quinta Glamping ===
     ["TBD", "Brett, Quinta Glamping (Algarve)", "Online-Buchung", "Sebastian (geplant)",
