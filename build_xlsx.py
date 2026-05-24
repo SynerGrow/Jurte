@@ -2213,8 +2213,8 @@ log = [
      "VERDACHT: Mikael+Benedikt selber Verkaeufer oder verbunden (Gouveia+15k+8m). Sebastian fragt direkt nach. Folge-Fragen: Hersteller? Holz? Was in 15k? Versand-Schaetzung? Aufgebaut/neu? Mehr Fotos? Besuch Anfang Juni?"],
     ["24.05.2026 (Sebastians Folge)", "Mikael (Mickaël)", "Telegram DM",
      "Sebastian -> Mikael",
-     "Folge-Fragen: Verbindung zu Benedikt direkt erfragt + Hersteller/Wandholz/Behandlung + was genau in 15k + Versand-Schaetzung Aljezur + aufgebaut/neu + mehr Innenfotos + Besuch Anfang Juni in Gouveia",
-     "⏳ Zu senden", "Bei Antwort: Vergleich mit Benedikt machen, ggf. kombinierte Besichtigung"],
+     "Detaillierte Folge-Fragen in 4 Bloecken: 1) HOLZ: Wand/Tono/Uni/Tueren-Holz+Behandlung. 2) ISOLIERUNG: Material/Dicke Wand/Dach/Innenliner-Spec. 3) WAS IN 15k: Anzahl Tueren+Fenster, Skylight-Groesse, Canvas vs Vinyl, AC4-Flaeche/Verlegung. 4) PRAKTISCH: Hersteller+Garantie, Versand-Schaetzung, neu/aufgebaut. Plus: mehr Innenfotos, Besuchstermin Gouveia Anfang Juni. VERDACHT BENEDIKT-VERBINDUNG direkt angesprochen.",
+     "⏳ Zu senden", "Antwort wird Vergleich mit Benedikt entscheiden + ggf. kombinierte Besichtigung Anfang Juni"],
 
     ["23.05.2026", "Dror (Telegram-Gruppe)", "Telegram-Post",
      "Dror -> Gruppe",
