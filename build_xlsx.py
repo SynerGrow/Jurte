@@ -2270,6 +2270,11 @@ log = [
      "Ja zur Liefer-Option grundsaetzlich interessiert. Wann ist Castelo-Branco-Termin? Wie viel Aufpreis fuer Aljezur? Wenn nach Mitte Juni: ideal - Besuch + Lieferung kombinieren.",
      "⏳ Zu senden",
      "Wenn Mikaels Liefertermin VOR Mitte Juni: Konflikt mit Besuch. Falls NACH Mitte Juni: ideal."],
+    ["24.05.2026 KONSOLIDIERT", "Mikael (Bento)", "Telegram DM",
+     "Sebastian -> Mikael",
+     "KONSOLIDIERTE NACHRICHT MIT 8 BLOECKEN: 1) Lagerungs-Zustand 10 Mon Van (Canvas/Filz/Holz). 2) Rost-Quantifizierung (%/Position/Material). 3) Pacific Yurts Modell+Sunforger-Canvas+Vinyl-Inkl. 4) DAEMMUNG-UPGRADE moeglich (14mm oder doppelt)? Falls nein: ok wenn Sebastian 8mm Zusatzschicht selbst macht? 5) HOLZ-BEHANDLUNG durch Mikael vor Lieferung moeglich+Preis? Falls nein: Produkt-Empfehlung. 6) LIEFERUNG Castelo Branco Datum+Aufpreis Aljezur+Hilfe Abladen. 7) Visit-Termin Sa 14 vs Sa 21 Juni. 8) Andere Jurte 7m/8m, Mikael Beladen-Hilfe?",
+     "⏳ Zu senden",
+     "Mit diesen Antworten kann Sebastian Vollkosten kalkulieren in 3 Szenarien (A=Selbst, B=Mittlerer Service, C=Max Komfort). Total 21,1k-22,4k je Szenario."],
 
     ["23.05.2026", "Dror (Telegram-Gruppe)", "Telegram-Post",
      "Dror -> Gruppe",
@@ -2686,6 +2691,98 @@ for entry in platt:
         ws17.row_dimensions[row].height = max(20, min(45, 15 + len(str(e)) // 8))
     row += 1
 ws17.freeze_panes = "A2"
+
+
+# ---------- Sheet 18: Mikael Pacific Yurts 3-Szenarien Kostenrechnung ----------
+ws18 = wb.create_sheet("18 Mikael 3 Szenarien")
+ws18.column_dimensions["A"].width = 48
+ws18.column_dimensions["B"].width = 14
+ws18.column_dimensions["C"].width = 14
+ws18.column_dimensions["D"].width = 14
+ws18.column_dimensions["E"].width = 45
+
+t = ws18.cell(row=1, column=1, value="Mikael Pacific Yurts 8m - 3 Szenarien Vollkosten (Mai 2026)")
+t.font = TITLE_FONT
+ws18.merge_cells("A1:E1")
+ws18.row_dimensions[1].height = 28
+
+for col, h in enumerate(["Position", "A: Selbst max", "B: Mittel", "C: Komfort", "Bemerkung"], 1):
+    c = ws18.cell(row=2, column=col, value=h)
+    c.fill = HEADER_FILL
+    c.font = HEADER_FONT
+    c.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+    c.border = BORDER
+
+szenarien = [
+    ("Pacific Yurts 8m (Mikael Basis)", 15000, 15000, 15000, "Jurte selbst, alle Komponenten"),
+    ("AC4-Boden 52 m² optional", 700, 700, 700, "Mikaels Selbstkosten-Preis fair"),
+    ("Lieferung Castelo-Branco-Mitnahme (Schaetzung)", 500, 500, 800, "Mit Aufbauhilfe in Szenario C"),
+    ("Zusatz-Daemmung 8mm Schafwoll-Filz Material", 600, 600, 800, "C: Mikael waehlt dickeres Filz"),
+    ("Termiten-Behandlung Holz", 500, 400, 500, "A: Material+Selbstarbeit / B+C: durch Mikael+Oel-Auffrischung"),
+    ("Schrauben-Ersatz Edelstahl A4", 200, 600, 600, "A: Material+Selbstarbeit 30 Std / B+C: durch Mikael"),
+    ("Plattform DIY Kork (Sheet 17)", 2880, 2880, 3300, "C: Premium Variante"),
+    ("Schattennetz Algarve", 240, 240, 240, "Lokale Agrar-Koop"),
+    ("Reserve / Werkzeug", 500, 500, 500, ""),
+    ("", "", "", "", ""),
+    ("TOTAL ALL-IN", 21120, 21420, 22440, "Spannweite 1.320 EUR"),
+    ("Eigenarbeit (Stunden)", "~80 h", "~50 h", "~20 h", ""),
+    ("", "", "", "", ""),
+    ("VERGLEICH MIT DANI 7m Premium (21.620 EUR)", "", "", "", ""),
+    ("Mikael Szenario A vs Dani", "-500", "", "", "Mikael 500 EUR guenstiger als Dani"),
+    ("Mikael Szenario B vs Dani", "", "-200", "", "Praktisch gleich"),
+    ("Mikael Szenario C vs Dani", "", "", "+820", "Komfort kostet 820 EUR Aufpreis"),
+    ("", "", "", "", ""),
+    ("ABER: Dani Vorteile", "", "", "", ""),
+    ("Daemmung", "7+8 mm", "7+8 mm", "bis 14 mm", "Dani 40mm = 2x dicker als Mikael max"),
+    ("Probeschlafen", "nein", "nein", "nein", "Dani JA - Live-Verifikation"),
+    ("Community", "nein", "nein", "nein", "Dani: 4 Familien vor Ort"),
+    ("Rost-Risiko", "moderat", "behoben", "behoben", "Dani: keiner"),
+    ("Termiten-Risiko", "moderat", "behoben", "behoben", "Dani: keiner (atmungsaktive Bauweise)"),
+    ("Lagerungs-Risiko 10 Mon Van", "ja", "ja", "ja", "Dani: frisch gebaut Aug/Sep"),
+    ("Wohnflaeche", "50 m²", "50 m²", "50 m²", "Dani: 38 m²"),
+    ("Markenwert", "Pacific Yurts Premium", "Pacific Yurts Premium", "Pacific Yurts Premium", "Dani: Selbstbau 8J Erfahrung"),
+]
+
+row = 3
+for entry in szenarien:
+    a, b, c, d, e = entry
+    if not a and not b and not c and not d:
+        ws18.row_dimensions[row].height = 8
+    elif isinstance(a, str) and (a.startswith("VERGLEICH") or a == "ABER: Dani Vorteile"):
+        cell = ws18.cell(row=row, column=1, value=a)
+        cell.font = Font(bold=True, size=12, color="2E5C8A")
+        ws18.merge_cells(start_row=row, start_column=1, end_row=row, end_column=5)
+        ws18.row_dimensions[row].height = 22
+    else:
+        c1 = ws18.cell(row=row, column=1, value=a)
+        c1.alignment = Alignment(wrap_text=True, vertical="top")
+        c1.border = BORDER
+        c2 = ws18.cell(row=row, column=2, value=b)
+        c2.alignment = Alignment(horizontal="right", vertical="top")
+        c2.border = BORDER
+        if isinstance(b, (int, float)):
+            c2.number_format = '#,##0 "EUR"'
+        c3 = ws18.cell(row=row, column=3, value=c)
+        c3.alignment = Alignment(horizontal="right", vertical="top")
+        c3.border = BORDER
+        if isinstance(c, (int, float)):
+            c3.number_format = '#,##0 "EUR"'
+        c4 = ws18.cell(row=row, column=4, value=d)
+        c4.alignment = Alignment(horizontal="right", vertical="top")
+        c4.border = BORDER
+        if isinstance(d, (int, float)):
+            c4.number_format = '#,##0 "EUR"'
+        c5 = ws18.cell(row=row, column=5, value=e)
+        c5.alignment = Alignment(wrap_text=True, vertical="top")
+        c5.border = BORDER
+        if isinstance(a, str) and "TOTAL" in a:
+            c1.font = Font(bold=True)
+            c2.font = Font(bold=True, size=12, color="2E5C8A")
+            c3.font = Font(bold=True, size=12, color="2E5C8A")
+            c4.font = Font(bold=True, size=12, color="2E5C8A")
+        ws18.row_dimensions[row].height = max(20, min(45, 15 + len(str(e)) // 8))
+    row += 1
+ws18.freeze_panes = "A2"
 
 
 # Speichern
