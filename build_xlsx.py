@@ -2846,6 +2846,137 @@ for entry in szenarien:
 ws18.freeze_panes = "A2"
 
 
+# ---------- Sheet 19: Atilla DIY-Modify Stundenaufschluesselung ----------
+ws19 = wb.create_sheet("19 Atilla DIY Stunden")
+ws19.column_dimensions["A"].width = 45
+ws19.column_dimensions["B"].width = 16
+ws19.column_dimensions["C"].width = 55
+
+t = ws19.cell(row=1, column=1, value="Atilla DIY-Modify 8m - Stunden-Aufschluesselung Eigenarbeit (Sebastians Frage Mai 2026)")
+t.font = TITLE_FONT
+ws19.merge_cells("A1:C1")
+ws19.row_dimensions[1].height = 28
+
+for col, h in enumerate(["Taetigkeit", "Stunden", "Bemerkung"], 1):
+    c = ws19.cell(row=2, column=col, value=h)
+    c.fill = HEADER_FILL
+    c.font = HEADER_FONT
+    c.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+    c.border = BORDER
+
+stunden = [
+    ("BLOCK 1: PLATTFORM DIY", "", ""),
+    ("Schraubpfaehle setzen (8x Krinner KSF-M)", "4-6 Std", "Mit Hand-Erdrakete oder hydraulisches Eindrehgeraet"),
+    ("Tragwerk Doppel-T + Radial-Balken", "8-12 Std", "Kiefer KDI 50x200, Schrauben"),
+    ("Kork-Daemmung einlegen (PE-Folie+Kork 80mm)", "4 Std", "Plattform-Daemmung Sheet 17 Variante B"),
+    ("Laerchen-Deck T+G verlegen 50 m²", "8-12 Std", "Bohren, schrauben, schneiden"),
+    ("Schrauben + Kanten-Arbeiten + Aufmass", "2-3 Std", ""),
+    ("PLATTFORM-TOTAL", "26-37 Std", ""),
+
+    ("", "", ""),
+    ("BLOCK 2: FRAME-AUFBAU (mit 4-6 Helfern)", "", ""),
+    ("Khaana entfalten + im Kreis stellen", "4-6 Std", "Mit 4 Helfern"),
+    ("Tuerrahmen einsetzen + Spannband", "3-4 Std", "Kuriye-Band Wandkrone"),
+    ("Tono hochheben + 60+ Uni einsetzen", "6-8 Std", "ALLE Helfer aktiv, Leitern, kritischer Schritt"),
+    ("Tuerblatt einhaengen + justieren", "2-3 Std", "Zwei-Personen-Arbeit"),
+    ("AUFBAU-TOTAL", "15-21 Std", "Sebastians Stunden gezaehlt"),
+
+    ("", "", ""),
+    ("BLOCK 3: PLANE + MEMBRAN + DAEMMUNG", "", ""),
+    ("Innenliner Baumwolle befestigen", "3-4 Std", "Tacker, Naehnadel an Khaana"),
+    ("Wollfilz auflegen (Wand + Dach)", "4-6 Std", "8mm Filz auf Khaana"),
+    ("Solitex-Membran ueberlappend", "2-3 Std", "Diffusionsoffene Schicht"),
+    ("Aussenplane Sauleda hochziehen+spannen", "4-6 Std", "Mit 4 Helfern und Leitern"),
+    ("Kuppel-Oberlicht einsetzen", "1-2 Std", "Polycarbonat 1.40 m"),
+    ("PLANE/DAEMMUNG-TOTAL", "14-21 Std", ""),
+
+    ("", "", ""),
+    ("BLOCK 4: STURM-KIT + SCHATTENNETZ", "", ""),
+    ("8-10 Erdanker setzen fuer Sturm", "2-3 Std", "Krinner M16 1m Anker"),
+    ("Ratschen-Riemen ueber Dach spannen", "2 Std", "Algarve-Wind-Schutz"),
+    ("Schattennetz drueber montieren", "2-3 Std", "Wichtig fuer Plane-Lebensdauer"),
+    ("STURM/SCHATTEN-TOTAL", "6-8 Std", ""),
+
+    ("", "", ""),
+    ("BLOCK 5: TERMITEN-BEHANDLUNG", "", ""),
+    ("Borax-Loesung anruehren + Khaana behandeln", "4-6 Std", "Pinsel, alle Holzflaechen"),
+    ("Trocknen + 2. Anstrich falls noetig", "2 Std", ""),
+    ("TERMITEN-TOTAL", "6-8 Std", "Vor Aufbau machen!"),
+
+    ("", "", ""),
+    ("BLOCK 6: KOORDINATIONS-ARBEIT", "", ""),
+    ("Atilla-Bestellung + Versand-Logistik HU->PT", "3-5 Std", "Eigener Spediteur + Maut/Versicherung"),
+    ("Sauleda-Material bestellen ES oder PT", "3-5 Std", "Lieferanten-Vergleich + Bestellung"),
+    ("Sattler-Termin koordinieren", "2-4 Std", "Vilamoura - Mass+Naeh-Termin"),
+    ("Chris-Wolle bestellen + Lieferung", "1-2 Std", "PT-Direkt oder Isolena AT"),
+    ("Kuppel separat bestellen", "1-2 Std", "Polycarbonat-Anbieter PT"),
+    ("Schrauben + Beschlaege Wuerth PT", "2-3 Std", "Edelstahl A4 zusammenstellen"),
+    ("Plaene + Masse zwischen Lieferanten", "3-5 Std", "Verteilt ueber Wochen"),
+    ("KOORDINATIONS-TOTAL", "15-26 Std", "ueber mehrere Wochen verteilt"),
+
+    ("", "", ""),
+    ("BLOCK 7: OPTIONAL", "", ""),
+    ("AC4 Boden verlegen falls genommen", "4-6 Std", "Schwimmend, Klicksystem"),
+    ("Innen-Ausbau Moebel", "variabel", "Nicht in Eigenarbeit gerechnet"),
+
+    ("", "", ""),
+    ("GESAMT-TOTAL OHNE BLOCK 7", "86-127 Std", "Realistisch 100-130 Std fuer normalen DIY-Hintergrund"),
+    ("Mit Erfahrung Holzarbeiten", "80-100 Std", ""),
+    ("Anfaenger DIY", "130-160 Std", ""),
+
+    ("", "", ""),
+    ("AUSLAGERUNGS-OPTIONEN", "", ""),
+    ("Plattform fertig bauen lokaler PT-Zimmermann", "spart 30 Std", "+1.500-2.500 EUR extra"),
+    ("Frame-Aufbau-Hilfe 4 Helfer 2 Tage", "spart 10 Std", "+800 EUR (Sebastian noch dabei)"),
+    ("Plane bei Atilla naehen lassen vor Versand", "spart 5 Std", "+500-800 EUR"),
+    ("Termiten-Behandlung PT-Profi", "spart 6 Std", "+300-500 EUR"),
+    ("Mit allen Auslagerungen", "40-50 Std", "Aber +3.000-4.500 EUR = ca. 22.500 EUR all-in (kein Vorteil mehr vs Dani)"),
+
+    ("", "", ""),
+    ("VERGLEICH EIGENARBEIT ALLER OPTIONEN", "", ""),
+    ("Atilla DIY-Modify", "100-130 Std", "Bei 30 EUR/h Hobby-Wert = 3.000-3.900 EUR Eigenleistung"),
+    ("Mikael Pacific Yurts", "40-50 Std", "Plattform+Schrauben+Termiten+Aufbau-Hilfe"),
+    ("Dani Standard (sie baut Jurte auf)", "25-35 Std", "Nur Plattform-DIY"),
+
+    ("", "", ""),
+    ("FAZIT", "", ""),
+    ("Atilla 100 Std = real (verteilt 7 Bloecke)", "", "Vor allem Koordination 15-26 Std + Plattform 26-37 Std + Aufbau 15-21 Std macht Hauptteil"),
+    ("Wert der Eigenarbeit", "", "2.000 EUR gespart vs Dani, dafuer 70-100 Std mehr Arbeit. Lohnt sich wenn DIY-Hobby + Zeit. Nicht lohnt wenn knapp Zeit."),
+]
+
+row = 3
+for entry in stunden:
+    a, b, c = entry
+    if isinstance(a, str) and a.startswith("BLOCK") and not b:
+        cell = ws19.cell(row=row, column=1, value=a)
+        cell.font = Font(bold=True, size=12, color="2E5C8A")
+        ws19.merge_cells(start_row=row, start_column=1, end_row=row, end_column=3)
+        ws19.row_dimensions[row].height = 22
+    elif isinstance(a, str) and (a == "AUSLAGERUNGS-OPTIONEN" or a == "VERGLEICH EIGENARBEIT ALLER OPTIONEN" or a == "FAZIT"):
+        cell = ws19.cell(row=row, column=1, value=a)
+        cell.font = Font(bold=True, size=12, color="2E5C8A")
+        ws19.merge_cells(start_row=row, start_column=1, end_row=row, end_column=3)
+        ws19.row_dimensions[row].height = 22
+    elif not a and not b and not c:
+        ws19.row_dimensions[row].height = 8
+    else:
+        c1 = ws19.cell(row=row, column=1, value=a)
+        c1.alignment = Alignment(wrap_text=True, vertical="top")
+        c1.border = BORDER
+        c2 = ws19.cell(row=row, column=2, value=b)
+        c2.alignment = Alignment(horizontal="center", vertical="top")
+        c2.border = BORDER
+        c3 = ws19.cell(row=row, column=3, value=c)
+        c3.alignment = Alignment(wrap_text=True, vertical="top")
+        c3.border = BORDER
+        if isinstance(a, str) and "TOTAL" in a:
+            c1.font = Font(bold=True)
+            c2.font = Font(bold=True, color="2E5C8A")
+        ws19.row_dimensions[row].height = max(20, min(45, 15 + len(str(c)) // 8))
+    row += 1
+ws19.freeze_panes = "A2"
+
+
 # Speichern
 output_path = "/home/user/Jurte/Jurten_Recherche_Algarve.xlsx"
 wb.save(output_path)
