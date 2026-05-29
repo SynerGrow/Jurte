@@ -2385,9 +2385,9 @@ log = [
      "Sebastian 3 Optionen: A) 2k Reservierung (Kompromiss, begrenzt Risiko), B) Klare Absage 'kein Geld vor Besuch', C) Volle 5k blind anzahlen (riskant). Empfehlung: Option A wenn Mikael interessant, Option B wenn Dani jetzt klare 1. Wahl."],
     ["29.05.2026 (Sebastians Entscheidung)", "Mikael (Bento)", "Telegram DM",
      "Sebastian -> Mikael",
-     "OPTION B GEWAEHLT: Klare Linie - kein Geld vor Besuch. Ehrlich: 'cannot give full guarantee or any deposit before visit'. Akzeptiert wenn Mikael an anderen verkauft. Falls warten: Besuch 14/21 Juni, 5k sofort danach wenn alles wie beschrieben. Demuetig: 'whatever works for you - let me know honestly'.",
-     "⏳ Zu senden (Option B)",
-     "STRATEGISCHE BEDEUTUNG: Dani ist Sebastian's erste Wahl. Mikael ist akzeptables Verlustrisiko. Maximum Schutz. 3 mögliche Reaktionen: a) Ok ich warte bis Juni = Sebastian besucht beide. b) Doch 1-2k? = Nachverhandeln moeglich. c) Sorry muss verkaufen = Fokus voll auf Dani."],
+     "OPTION B FINAL: 'I need a bit more time to make this decision. Big step for our family.' Verstaendnis fuer Mikaels Lage. Klare Ausweg-Option: 'if you can't wait, go ahead with another buyer - no hard feelings'. Falls warten: Besuch 14/21 Juni, 5k sofort danach. Demuetig + ehrlich: 'let me know honestly what works for you'.",
+     "⏳ Zu senden",
+     "STRATEGIE: Sebastian will Zeit fuer Vergleich Dani vs Mikael. Maximum Ehrlichkeit + Akzeptanz Mikael verkauft. 3 mögliche Reaktionen: a) Mikael wartet = Sebastian besucht beide. b) Reservierungs-Verhandlung = Sebastian kann dann entscheiden. c) Mikael verkauft = Dani-Track fokussieren."],
 
     ["23.05.2026", "Dror (Telegram-Gruppe)", "Telegram-Post",
      "Dror -> Gruppe",
